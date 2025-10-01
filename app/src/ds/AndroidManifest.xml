@@ -1,15 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:icon="@mipmap/ds_launcher"
-        android:roundIcon="@mipmap/ds_launcher_round">
+        android:roundIcon="@mipmap/ds_launcher_round"
+        android:label="My Dive Log Design System">
         <activity
-            android:name=".design.MyDiveLogDesignActivity"
+            android:name=".design.app.MyDiveLogDesignActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".design.app.DSButtonPreviewActivity"/>
+        <activity android:name=".design.app.DSNavigationPreviewActivity"/>
 
         <!-- MainActivity exists, but no launcher here -->
         <activity android:name=".app.MyDiveLogActivity" />

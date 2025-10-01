@@ -60,6 +60,7 @@ android {
 
 kotlin {
     compilerOptions {
+        freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
@@ -70,8 +71,12 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(platform(libs.compose.bom))
+
     implementation(libs.compose.ui)
     implementation(libs.compose.material3)
+    implementation(libs.compose.material.icons.core)
+    implementation(libs.compose.material.icons.extended)
+
     implementation(libs.activity.compose)
     implementation(libs.compose.ui.tooling.preview)
     implementation(libs.kotlinx.serialization.json)
