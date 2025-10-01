@@ -9,6 +9,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation
 import org.itsolutions.mydivelog.design.components.button.DSCombinedButtons
 import org.itsolutions.mydivelog.design.components.button.DSPrimaryButton
@@ -43,7 +44,7 @@ class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
         )
 
     @Composable
-    override fun Content() {
+    override fun Content(navController: NavHostController) {
         val scrollState = rememberScrollState()
         Column(
             modifier = Modifier.verticalScroll(scrollState),

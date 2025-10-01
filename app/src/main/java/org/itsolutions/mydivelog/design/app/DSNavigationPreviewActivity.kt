@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.components.navigation.DSBottomNavigationBar
 import org.itsolutions.mydivelog.design.components.navigation.DSBottomNavigationElement
@@ -32,7 +33,7 @@ class DSNavigationPreviewActivity : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content() {
+    override fun Content(navController: NavHostController) {
         val scrollState = rememberScrollState()
         var currentRoute by rememberSaveable { mutableStateOf("Two") }
 
@@ -48,27 +49,27 @@ class DSNavigationPreviewActivity : MyDiveLogThemedActivity() {
                     entries = listOf(
                         DSBottomNavigationElement(
                             route = "One",
-                            label = R.string.app_name,
+                            label = R.string.bottom_navigation_home,
                             icon = R.drawable.scuba_diving
                         ),
                         DSBottomNavigationElement(
                             route = "Two",
-                            label = R.string.app_name,
+                            label = R.string.bottom_navigation_home,
                             icon = R.drawable.emoji_people
                         ),
                         DSBottomNavigationElement(
                             route = "Three",
-                            label = R.string.app_name,
+                            label = R.string.bottom_navigation_home,
                             icon = R.drawable.scuba_diving
                         ),
                         DSBottomNavigationElement(
                             route = "Four",
-                            label = R.string.app_name,
+                            label = R.string.bottom_navigation_home,
                             icon = R.drawable.emoji_people
                         ),
                         DSBottomNavigationElement(
                             route = "Five",
-                            label = R.string.app_name,
+                            label = R.string.bottom_navigation_home,
                             icon = R.drawable.scuba_diving
                         ),
                     ),

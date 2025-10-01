@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_certificate_already_exists">This organisation already has a certificate registered with the same number. To proceed, please provide a unique certificate number that does not duplicate an existing one.</string>
+</resources>

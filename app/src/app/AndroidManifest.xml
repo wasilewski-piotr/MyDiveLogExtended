@@ -1,8 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:icon="@mipmap/app_launcher"
-        android:roundIcon="@mipmap/app_launcher_round"
-        android:label="My Dive Log">
+        android:roundIcon="@mipmap/app_launcher_round">
         <activity
             android:name=".app.MyDiveLogActivity"
             android:exported="true">
