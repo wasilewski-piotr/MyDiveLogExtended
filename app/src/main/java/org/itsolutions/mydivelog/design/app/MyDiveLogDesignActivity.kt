@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.design.components.button.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
@@ -23,7 +24,7 @@ class MyDiveLogDesignActivity : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content() {
+    override fun Content(navController: NavHostController) {
         val launch = activityLauncher()
         val context = LocalContext.current
 

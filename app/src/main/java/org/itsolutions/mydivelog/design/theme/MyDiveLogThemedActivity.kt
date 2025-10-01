@@ -14,13 +14,15 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import org.itsolutions.mydivelog.design.theme.spacings.DS
 
 abstract class MyDiveLogThemedActivity : ComponentActivity() {
 
     @Composable protected open fun TopBar() {}
-    @Composable protected open fun BottomBar() {}
-    @Composable protected abstract fun Content()
+    @Composable protected open fun BottomBar(navController: NavHostController) {}
+    @Composable protected abstract fun Content(navController: NavHostController)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +41,12 @@ abstract class MyDiveLogThemedActivity : ComponentActivity() {
         window.isNavigationBarContrastEnforced = false
 
         setContent {
+            val navController = rememberNavController()
             MyDiveLogTheme {
                 Scaffold(
                     contentWindowInsets = WindowInsets.safeDrawing,
                     topBar = { TopBar() },
-                    bottomBar = { BottomBar() }
+                    bottomBar = { BottomBar(navController) }
                 ) { padding ->
                     Column(
                         modifier = Modifier
@@ -51,7 +54,7 @@ abstract class MyDiveLogThemedActivity : ComponentActivity() {
                             .padding(padding)
                             .padding(DS.spacing.lg)
                     ) {
-                        Content()
+                        Content(navController)
                     }
                 }
             }

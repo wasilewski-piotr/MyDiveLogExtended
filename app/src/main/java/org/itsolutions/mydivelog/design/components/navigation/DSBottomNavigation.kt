@@ -6,23 +6,24 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import kotlinx.serialization.Serializable
 import org.itsolutions.mydivelog.R
-import org.itsolutions.mydivelog.design.theme.spacings.DS
 
 @Serializable
 data class DSBottomNavigationElement(
@@ -32,8 +33,24 @@ data class DSBottomNavigationElement(
 )
 
 @Composable
-fun DSBottomNavigation(entries: List<DSBottomNavigationElement>) {
-    val navController = rememberNavController()
+fun DSBottomNavigationNavHost(
+    navController: NavHostController,
+    startDestination: DSBottomNavigationElement,
+    entries: List<DSBottomNavigationElement>,
+    modifier: Modifier = Modifier,
+    onDestination: @Composable (DSBottomNavigationElement) -> Unit,
+) {
+    NavHost(navController, startDestination.route, modifier) {
+        entries.forEach { destination ->
+            composable(destination.route) {
+                onDestination(destination)
+            }
+        }
+    }
+}
+
+@Composable
+fun DSBottomNavigation(navController: NavHostController, entries: List<DSBottomNavigationElement>) {
     val currentDestination = navController.currentBackStackEntryAsState().value?.destination
     val currentRoute = currentDestination?.hierarchy?.firstOrNull()?.route
 
@@ -53,7 +70,7 @@ internal fun DSBottomNavigationBar(
 ) {
     NavigationBar {
         Row(
-            modifier = Modifier.fillMaxWidth().padding(DS.spacing.sm),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             entries.forEach {
@@ -65,7 +82,8 @@ internal fun DSBottomNavigationBar(
                             painter = painterResource(it.icon),
                             contentDescription = null
                         )
-                    }
+                    },
+                    label = { Text(stringResource(it.label)) }
                 )
             }
         }
