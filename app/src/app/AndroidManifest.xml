@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application
+        android:icon="@mipmap/app_launcher"
+        android:roundIcon="@mipmap/app_launcher_round">
+        <activity
+            android:name=".app.MyDiveLogActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- DS activity exists, but no launcher here -->
+        <activity android:name=".design.MyDiveLogDesignActivity" />
+    </application>
+</manifest>
