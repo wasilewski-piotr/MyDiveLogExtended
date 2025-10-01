@@ -19,6 +19,7 @@ data class Spacing(
 
 @Immutable
 data class Radius(
+    val xs: Dp = 4.dp,
     val sm: Dp = 8.dp,
     val md: Dp = 12.dp,
     val lg: Dp = 20.dp,
