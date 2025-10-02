@@ -6,8 +6,8 @@ import org.itsolutions.mydivelog.app.domain.model.results.DataError
 import org.itsolutions.mydivelog.app.domain.model.results.Result
 
 interface CertificateRepository {
-    suspend fun getDistinctOrganizations(): List<DiveOrganization>
-    suspend fun getAllCertifications(): List<Certificate>
+    suspend fun getDistinctOrganizations(): Result<List<DiveOrganization>, DataError>
+    suspend fun getAllCertifications(): Result<List<Certificate>, DataError>
     suspend fun createCertificate(certificate: Certificate): Result<Unit, DataError>
     suspend fun deleteCertificate(certificate: Certificate): Result<Unit, DataError>
 }

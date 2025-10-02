@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.components.navigation.DSBottomNavigationBar
@@ -18,6 +19,7 @@ import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationTyp
 import org.itsolutions.mydivelog.design.components.section.DSSection
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
+import org.itsolutions.mydivelog.extensions.verticalPadding
 
 class DSNavigationPreviewActivity : MyDiveLogThemedActivity() {
 
@@ -34,7 +36,10 @@ class DSNavigationPreviewActivity : MyDiveLogThemedActivity() {
     override fun Content(navController: NavHostController) {
         var currentRoute by rememberSaveable { mutableStateOf("Two") }
 
-        Column(verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xl)) {
+        Column(
+            modifier = Modifier.verticalPadding(),
+            verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xl)
+        ) {
             DSSection("DSTopNavigation") { DSTopNavigation("DSTopNavigationType.BACK", DSTopNavigationType.BACK) { } }
             DSSection("DSTopNavigation") { DSTopNavigation("DSTopNavigationType.EXIT", DSTopNavigationType.EXIT) { } }
             DSSection("DSBottomNavigation") {

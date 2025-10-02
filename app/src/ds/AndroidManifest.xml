@@ -14,6 +14,7 @@
 
         <activity android:name=".design.app.DSButtonPreviewActivity"/>
         <activity android:name=".design.app.DSNavigationPreviewActivity"/>
+        <activity android:name=".design.app.DSCardPreviewActivity"/>
 
         <!-- MainActivity exists, but no launcher here -->
         <activity android:name=".app.MyDiveLogActivity" />

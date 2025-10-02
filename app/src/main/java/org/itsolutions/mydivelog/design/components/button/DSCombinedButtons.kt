@@ -1,18 +1,52 @@
 package org.itsolutions.mydivelog.design.components.button
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
+import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation.HORIZONTAL
+import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation.HORIZONTAL_INVERTED
+import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation.VERTICAL
+import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation.VERTICAL_INVERTED
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 
 enum class DSButtonsOrientation {
-    VERTICAL, HORIZONTAL
+    VERTICAL, HORIZONTAL, VERTICAL_INVERTED, HORIZONTAL_INVERTED
+}
+
+@Composable
+fun DSCombinedButtons(
+    @StringRes primaryText: Int,
+    onPrimaryClick: () -> Unit,
+    @StringRes secondaryText: Int,
+    onSecondaryClick: () -> Unit,
+    orientation: DSButtonsOrientation,
+    @DrawableRes primaryLeadingIcon: Int? = null,
+    @DrawableRes primaryTrailingIcon: Int? = null,
+    @DrawableRes secondaryLeadingIcon: Int? = null,
+    @DrawableRes secondaryTrailingIcon: Int? = null,
+) {
+    DSCombinedButtons(
+        primaryText = stringResource(primaryText),
+        secondaryText = stringResource(secondaryText),
+        onPrimaryClick = onPrimaryClick,
+        onSecondaryClick = onSecondaryClick,
+        orientation = orientation,
+        primaryLeadingIcon = primaryLeadingIcon,
+        primaryTrailingIcon = primaryTrailingIcon,
+        secondaryLeadingIcon = secondaryLeadingIcon,
+        secondaryTrailingIcon = secondaryTrailingIcon
+    )
 }
 
 @Composable
@@ -28,7 +62,8 @@ fun DSCombinedButtons(
     @DrawableRes secondaryTrailingIcon: Int? = null,
 ) {
     when (orientation) {
-        DSButtonsOrientation.VERTICAL -> DSCombinedButtonsVertically(
+        VERTICAL, VERTICAL_INVERTED -> DSCombinedButtonsVertically(
+            orientation = orientation,
             primaryText = primaryText,
             onPrimaryClick = onPrimaryClick,
             secondaryText = secondaryText,
@@ -38,7 +73,8 @@ fun DSCombinedButtons(
             secondaryLeadingIcon = secondaryLeadingIcon,
             secondaryTrailingIcon = secondaryTrailingIcon,
         )
-        DSButtonsOrientation.HORIZONTAL -> DSCombinedButtonsHorizontally(
+        HORIZONTAL, HORIZONTAL_INVERTED -> DSCombinedButtonsHorizontally(
+            orientation = orientation,
             primaryText = primaryText,
             onPrimaryClick = onPrimaryClick,
             secondaryText = secondaryText,
@@ -57,24 +93,43 @@ fun DSCombinedButtonsVertically(
     onPrimaryClick: () -> Unit,
     secondaryText: String,
     onSecondaryClick: () -> Unit,
+    orientation: DSButtonsOrientation,
     @DrawableRes primaryLeadingIcon: Int? = null,
     @DrawableRes primaryTrailingIcon: Int? = null,
     @DrawableRes secondaryLeadingIcon: Int? = null,
     @DrawableRes secondaryTrailingIcon: Int? = null,
 ) {
     Column {
-        DSPrimaryButtonMaxWidth(
-            text = primaryText,
-            onClick = onPrimaryClick,
-            leadingIcon = primaryLeadingIcon,
-            trailingIcon = primaryTrailingIcon
-        )
-        DSSecondaryButtonMaxWidth(
-            text = secondaryText,
-            onClick = onSecondaryClick,
-            leadingIcon = secondaryLeadingIcon,
-            trailingIcon = secondaryTrailingIcon
-        )
+        when (orientation) {
+            VERTICAL_INVERTED -> {
+                DSSecondaryButtonMaxWidth(
+                    text = secondaryText,
+                    onClick = onSecondaryClick,
+                    leadingIcon = secondaryLeadingIcon,
+                    trailingIcon = secondaryTrailingIcon
+                )
+                DSPrimaryButtonMaxWidth(
+                    text = primaryText,
+                    onClick = onPrimaryClick,
+                    leadingIcon = primaryLeadingIcon,
+                    trailingIcon = primaryTrailingIcon,
+                )
+            }
+            else -> {
+                DSPrimaryButtonMaxWidth(
+                    text = primaryText,
+                    onClick = onPrimaryClick,
+                    leadingIcon = primaryLeadingIcon,
+                    trailingIcon = primaryTrailingIcon,
+                )
+                DSSecondaryButtonMaxWidth(
+                    text = secondaryText,
+                    onClick = onSecondaryClick,
+                    leadingIcon = secondaryLeadingIcon,
+                    trailingIcon = secondaryTrailingIcon
+                )
+            }
+        }
     }
 }
 
@@ -84,26 +139,50 @@ fun DSCombinedButtonsHorizontally(
     onPrimaryClick: () -> Unit,
     secondaryText: String,
     onSecondaryClick: () -> Unit,
+    orientation: DSButtonsOrientation,
     @DrawableRes primaryLeadingIcon: Int? = null,
     @DrawableRes primaryTrailingIcon: Int? = null,
     @DrawableRes secondaryLeadingIcon: Int? = null,
     @DrawableRes secondaryTrailingIcon: Int? = null,
 ) {
-    Row(horizontalArrangement = Arrangement.spacedBy(DesignSystem.spacing.sm)) {
-        DSSecondaryButtonMaxWidth(
-            text = secondaryText,
-            onClick = onSecondaryClick,
-            modifier = Modifier.weight(1f),
-            leadingIcon = secondaryLeadingIcon,
-            trailingIcon = secondaryTrailingIcon
-        )
-        DSPrimaryButtonMaxWidth(
-            text = primaryText,
-            onClick = onPrimaryClick,
-            modifier = Modifier.weight(1f),
-            leadingIcon = primaryLeadingIcon,
-            trailingIcon = primaryTrailingIcon
-        )
+    Row(
+        modifier = Modifier.height(IntrinsicSize.Min),
+        horizontalArrangement = Arrangement.spacedBy(DesignSystem.spacing.sm),
+    ) {
+        when (orientation) {
+            HORIZONTAL_INVERTED -> {
+                DSPrimaryButtonMaxWidth(
+                    text = primaryText,
+                    onClick = onPrimaryClick,
+                    modifier = Modifier.weight(1f).fillMaxHeight(),
+                    leadingIcon = primaryLeadingIcon,
+                    trailingIcon = primaryTrailingIcon
+                )
+                DSSecondaryButtonMaxWidth(
+                    text = secondaryText,
+                    onClick = onSecondaryClick,
+                    modifier = Modifier.weight(1f).fillMaxHeight(),
+                    leadingIcon = secondaryLeadingIcon,
+                    trailingIcon = secondaryTrailingIcon
+                )
+            }
+            else -> {
+                DSSecondaryButtonMaxWidth(
+                    text = secondaryText,
+                    onClick = onSecondaryClick,
+                    modifier = Modifier.weight(1f).fillMaxHeight(),
+                    leadingIcon = secondaryLeadingIcon,
+                    trailingIcon = secondaryTrailingIcon
+                )
+                DSPrimaryButtonMaxWidth(
+                    text = primaryText,
+                    onClick = onPrimaryClick,
+                    modifier = Modifier.weight(1f).fillMaxHeight(),
+                    leadingIcon = primaryLeadingIcon,
+                    trailingIcon = primaryTrailingIcon
+                )
+            }
+        }
     }
 }
 
@@ -111,6 +190,19 @@ fun DSCombinedButtonsHorizontally(
 @Composable
 private fun DSButtonsCombinedVerticallyPreview() {
     DSCombinedButtonsVertically(
+        orientation = VERTICAL,
+        primaryText = "Primary Button",
+        onPrimaryClick = { },
+        secondaryText = "Secondary Button",
+        onSecondaryClick = { }
+    )
+}
+
+@Preview
+@Composable
+private fun DSButtonsCombinedVerticallyInvertedPreview() {
+    DSCombinedButtonsVertically(
+        orientation = VERTICAL_INVERTED,
         primaryText = "Primary Button",
         onPrimaryClick = { },
         secondaryText = "Secondary Button",
@@ -123,6 +215,7 @@ private fun DSButtonsCombinedVerticallyPreview() {
 private fun DSButtonsCombinedVerticallyWithIconsPreview() {
     Column {
         DSCombinedButtonsVertically(
+            orientation = VERTICAL,
             primaryText = "Primary Button",
             onPrimaryClick = { },
             secondaryText = "Secondary Button",
@@ -132,6 +225,7 @@ private fun DSButtonsCombinedVerticallyWithIconsPreview() {
         )
         VerticalSpacer(DesignSystem.spacing.sm)
         DSCombinedButtonsVertically(
+            orientation = VERTICAL,
             primaryText = "Primary Button",
             onPrimaryClick = { },
             secondaryText = "Secondary Button",
@@ -141,6 +235,45 @@ private fun DSButtonsCombinedVerticallyWithIconsPreview() {
         )
         VerticalSpacer(DesignSystem.spacing.sm)
         DSCombinedButtonsVertically(
+            orientation = VERTICAL,
+            primaryText = "Primary Button",
+            onPrimaryClick = { },
+            secondaryText = "Secondary Button",
+            onSecondaryClick = { },
+            primaryLeadingIcon = R.drawable.bar_chart,
+            secondaryLeadingIcon = R.drawable.bar_chart,
+            primaryTrailingIcon = R.drawable.bar_chart,
+            secondaryTrailingIcon = R.drawable.bar_chart,
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun DSButtonsCombinedVerticallyInvertedWithIconsPreview() {
+    Column {
+        DSCombinedButtonsVertically(
+            orientation = VERTICAL_INVERTED,
+            primaryText = "Primary Button",
+            onPrimaryClick = { },
+            secondaryText = "Secondary Button",
+            onSecondaryClick = { },
+            primaryLeadingIcon = R.drawable.bar_chart,
+            secondaryLeadingIcon = R.drawable.bar_chart
+        )
+        VerticalSpacer(DesignSystem.spacing.sm)
+        DSCombinedButtonsVertically(
+            orientation = VERTICAL_INVERTED,
+            primaryText = "Primary Button",
+            onPrimaryClick = { },
+            secondaryText = "Secondary Button",
+            onSecondaryClick = { },
+            primaryTrailingIcon = R.drawable.bar_chart,
+            secondaryTrailingIcon = R.drawable.bar_chart
+        )
+        VerticalSpacer(DesignSystem.spacing.sm)
+        DSCombinedButtonsVertically(
+            orientation = VERTICAL_INVERTED,
             primaryText = "Primary Button",
             onPrimaryClick = { },
             secondaryText = "Secondary Button",
@@ -157,6 +290,19 @@ private fun DSButtonsCombinedVerticallyWithIconsPreview() {
 @Composable
 private fun DSButtonsCombinedHorizontallyPreview() {
     DSCombinedButtonsHorizontally(
+        orientation = HORIZONTAL,
+        primaryText = "Primary Button",
+        onPrimaryClick = { },
+        secondaryText = "Secondary Button",
+        onSecondaryClick = { }
+    )
+}
+
+@Preview
+@Composable
+private fun DSButtonsCombinedHorizontallyInvertedPreview() {
+    DSCombinedButtonsHorizontally(
+        orientation = HORIZONTAL_INVERTED,
         primaryText = "Primary Button",
         onPrimaryClick = { },
         secondaryText = "Secondary Button",
@@ -169,6 +315,7 @@ private fun DSButtonsCombinedHorizontallyPreview() {
 private fun DSButtonsCombinedHorizontallyWithIconsPreview() {
     Column {
         DSCombinedButtonsHorizontally(
+            orientation = HORIZONTAL,
             primaryText = "Primary Button",
             onPrimaryClick = { },
             secondaryText = "Secondary Button",
@@ -178,6 +325,7 @@ private fun DSButtonsCombinedHorizontallyWithIconsPreview() {
         )
         VerticalSpacer(DesignSystem.spacing.sm)
         DSCombinedButtonsHorizontally(
+            orientation = HORIZONTAL,
             primaryText = "Primary Button",
             onPrimaryClick = { },
             secondaryText = "Secondary Button",
@@ -187,6 +335,45 @@ private fun DSButtonsCombinedHorizontallyWithIconsPreview() {
         )
         VerticalSpacer(DesignSystem.spacing.sm)
         DSCombinedButtonsHorizontally(
+            orientation = HORIZONTAL,
+            primaryText = "Primary Button",
+            onPrimaryClick = { },
+            secondaryText = "Secondary Button",
+            onSecondaryClick = { },
+            primaryLeadingIcon = R.drawable.bar_chart,
+            secondaryLeadingIcon = R.drawable.bar_chart,
+            primaryTrailingIcon = R.drawable.bar_chart,
+            secondaryTrailingIcon = R.drawable.bar_chart,
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun DSButtonsCombinedHorizontallyInvertedWithIconsPreview() {
+    Column {
+        DSCombinedButtonsHorizontally(
+            orientation = HORIZONTAL_INVERTED,
+            primaryText = "Primary Button",
+            onPrimaryClick = { },
+            secondaryText = "Secondary Button",
+            onSecondaryClick = { },
+            primaryLeadingIcon = R.drawable.bar_chart,
+            secondaryLeadingIcon = R.drawable.bar_chart,
+        )
+        VerticalSpacer(DesignSystem.spacing.sm)
+        DSCombinedButtonsHorizontally(
+            orientation = HORIZONTAL_INVERTED,
+            primaryText = "Primary Button",
+            onPrimaryClick = { },
+            secondaryText = "Secondary Button",
+            onSecondaryClick = { },
+            primaryTrailingIcon = R.drawable.bar_chart,
+            secondaryTrailingIcon = R.drawable.bar_chart,
+        )
+        VerticalSpacer(DesignSystem.spacing.sm)
+        DSCombinedButtonsHorizontally(
+            orientation = HORIZONTAL_INVERTED,
             primaryText = "Primary Button",
             onPrimaryClick = { },
             secondaryText = "Secondary Button",

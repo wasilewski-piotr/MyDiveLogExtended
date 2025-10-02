@@ -9,10 +9,10 @@ import org.itsolutions.mydivelog.R
 @Serializable
 enum class DiveOrganization(
     @StringRes val longName: Int,
-    @DrawableRes val logo: Int? = null,
-    val backgroundColor: Color? = null,
+    @DrawableRes val logo: Int,
+    val backgroundColor: Color,
 ) {
     SSI(R.string.SSI, R.drawable.ssi_logo, Color(0xFFE42313)),
     PADI(R.string.PADI, R.drawable.padi_logo, Color.Black),
-    GUE(R.string.GUE)
+//    GUE(R.string.GUE)
 }

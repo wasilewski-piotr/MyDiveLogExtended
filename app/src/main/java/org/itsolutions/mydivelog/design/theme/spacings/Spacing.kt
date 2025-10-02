@@ -23,5 +23,8 @@ data class DSRadius(
     val md: Dp = 12.dp,
     val lg: Dp = 20.dp,
     val xl: Dp = 28.dp,
+    val xxl: Dp = 32.dp,
+    val xxxl: Dp = 48.dp,
+    val xxxxl: Dp = 60.dp,
     val pill: Dp = 1000.dp
 )
