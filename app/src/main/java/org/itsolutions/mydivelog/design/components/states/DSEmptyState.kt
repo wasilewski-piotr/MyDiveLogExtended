@@ -43,7 +43,7 @@ internal fun DSEmptyStateContent(description: String) {
         modifier = Modifier.size(100.dp).rotate(40f).alpha(0.4f)
     )
     DSCardTitleWithTextCentered(
-        modifier = Modifier.fillMaxWidth().alpha(0.6f),
+        modifier = Modifier.fillMaxWidth().alpha(0.4f),
         title = stringResource(R.string.empty_state_title),
         text = description,
     )
