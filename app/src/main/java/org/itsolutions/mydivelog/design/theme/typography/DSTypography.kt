@@ -15,8 +15,8 @@ data class DSTypography(
 @Composable
 internal fun provideDSTypography(): DSTypography {
     return DSTypography(
-        screenTitle = MaterialTheme.typography.headlineLarge,
-        screenSubtitle = MaterialTheme.typography.bodyLarge,
+        screenTitle = MaterialTheme.typography.headlineLarge.copy(Color.Black),
+        screenSubtitle = MaterialTheme.typography.bodyLarge.copy(Color.Black),
         cardTitle = MaterialTheme.typography.titleMedium.copy(Color.Black),
         cardText = MaterialTheme.typography.bodyMedium.copy(Color.Black)
     )

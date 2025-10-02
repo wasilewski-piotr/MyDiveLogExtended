@@ -34,7 +34,7 @@ fun DSCardTitle(
 
 @Preview
 @Composable
-fun DSCardTitlePreview() {
+private fun DSCardTitlePreview() {
     MyDiveLogTheme {
         Column(Modifier.background(Color.White)) {
             DSCardTitle("Card Title")

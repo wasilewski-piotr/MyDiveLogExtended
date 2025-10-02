@@ -79,7 +79,7 @@ fun DSCardTitleWithText(
 
 @Preview
 @Composable
-fun DSCardTitleWithTextPreview() {
+private fun DSCardTitleWithTextPreview() {
     MyDiveLogTheme {
         Column(Modifier.background(Color.White)) {
             DSCardTitleWithText(

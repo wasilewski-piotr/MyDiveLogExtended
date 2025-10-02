@@ -66,7 +66,7 @@ fun DSTitleWithSubtitle(
 
 @Preview
 @Composable
-fun DSTitleWithSubtitlePreview() {
+private fun DSTitleWithSubtitlePreview() {
     MyDiveLogTheme {
         Column(Modifier.background(Color.White)) {
             DSTitleWithSubtitle(

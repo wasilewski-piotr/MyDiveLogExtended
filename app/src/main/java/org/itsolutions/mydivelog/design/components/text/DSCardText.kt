@@ -34,7 +34,7 @@ fun DSCardText(
 
 @Preview
 @Composable
-fun DSCardTextPreview() {
+private fun DSCardTextPreview() {
     MyDiveLogTheme {
         Column(Modifier.background(Color.White)) {
             DSCardText("Card Text")
