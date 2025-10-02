@@ -5,8 +5,11 @@ import android.content.Intent
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation
@@ -20,6 +23,7 @@ import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationTyp
 import org.itsolutions.mydivelog.design.components.section.DSSection
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
+import org.itsolutions.mydivelog.extensions.verticalPadding
 
 class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
 
@@ -55,7 +59,11 @@ class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
     override fun Content(navController: NavHostController) {
-        Column(verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xl)) {
+        val scrollState = rememberScrollState()
+        Column(
+            modifier = Modifier.verticalScroll(scrollState).verticalPadding(),
+            verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xl)
+        ) {
             DSSection("DSPrimaryButton") { DSPrimaryButton("Primary Button") { } }
             DSSection("DSPrimaryButton | Leading icon") {
                 DSPrimaryButton(
@@ -146,6 +154,15 @@ class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
                     orientation = DSButtonsOrientation.HORIZONTAL
                 )
             }
+            DSSection("DSCombinedButtonsHorizontally | Long button text") {
+                DSCombinedButtons(
+                    primaryText = "Button",
+                    onPrimaryClick = { },
+                    secondaryText = "Secondary Button Very Long Name",
+                    onSecondaryClick = { },
+                    orientation = DSButtonsOrientation.HORIZONTAL
+                )
+            }
             DSSection("DSCombinedButtonsHorizontally | Leading icon") {
                 CombinedButtonsExample(
                     orientation = DSButtonsOrientation.HORIZONTAL,
@@ -163,6 +180,48 @@ class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
             DSSection("DSCombinedButtonsHorizontally | Both icons") {
                 CombinedButtonsExample(
                     orientation = DSButtonsOrientation.HORIZONTAL,
+                    primaryLeadingIcon = R.drawable.bar_chart,
+                    secondaryLeadingIcon = R.drawable.bar_chart,
+                    primaryTrailingIcon = R.drawable.bar_chart,
+                    secondaryTrailingIcon = R.drawable.bar_chart,
+                )
+            }
+            DSSection("DSCombinedButtonsHorizontallyInverted") { CombinedButtonsExample(DSButtonsOrientation.HORIZONTAL_INVERTED) }
+            DSSection("DSCombinedButtonsHorizontallyInverted | Long button text") {
+                DSCombinedButtons(
+                    primaryText = "Primary Button Very Long Name",
+                    onPrimaryClick = { },
+                    secondaryText = "Secondary Button Very Long Name",
+                    onSecondaryClick = { },
+                    orientation = DSButtonsOrientation.HORIZONTAL_INVERTED
+                )
+            }
+            DSSection("DSCombinedButtonsHorizontallyInverted | Long button text") {
+                DSCombinedButtons(
+                    primaryText = "Button",
+                    onPrimaryClick = { },
+                    secondaryText = "Secondary Button Very Long Name",
+                    onSecondaryClick = { },
+                    orientation = DSButtonsOrientation.HORIZONTAL_INVERTED
+                )
+            }
+            DSSection("DSCombinedButtonsHorizontallyInverted | Leading icon") {
+                CombinedButtonsExample(
+                    orientation = DSButtonsOrientation.HORIZONTAL_INVERTED,
+                    primaryLeadingIcon = R.drawable.bar_chart,
+                    secondaryLeadingIcon = R.drawable.bar_chart,
+                )
+            }
+            DSSection("DSCombinedButtonsHorizontallyInverted | Trailing icon") {
+                CombinedButtonsExample(
+                    orientation = DSButtonsOrientation.HORIZONTAL_INVERTED,
+                    primaryTrailingIcon = R.drawable.bar_chart,
+                    secondaryTrailingIcon = R.drawable.bar_chart,
+                )
+            }
+            DSSection("DSCombinedButtonsHorizontallyInverted | Both icons") {
+                CombinedButtonsExample(
+                    orientation = DSButtonsOrientation.HORIZONTAL_INVERTED,
                     primaryLeadingIcon = R.drawable.bar_chart,
                     secondaryLeadingIcon = R.drawable.bar_chart,
                     primaryTrailingIcon = R.drawable.bar_chart,
@@ -187,6 +246,30 @@ class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
             DSSection("DSCombinedButtonsVertically | Both icons") {
                 CombinedButtonsExample(
                     orientation = DSButtonsOrientation.VERTICAL,
+                    primaryLeadingIcon = R.drawable.bar_chart,
+                    secondaryLeadingIcon = R.drawable.bar_chart,
+                    primaryTrailingIcon = R.drawable.bar_chart,
+                    secondaryTrailingIcon = R.drawable.bar_chart,
+                )
+            }
+            DSSection("DSCombinedButtonsVerticallyInverted") { CombinedButtonsExample(DSButtonsOrientation.VERTICAL_INVERTED) }
+            DSSection("DSCombinedButtonsVerticallyInverted | Leading icon") {
+                CombinedButtonsExample(
+                    orientation = DSButtonsOrientation.VERTICAL_INVERTED,
+                    primaryLeadingIcon = R.drawable.bar_chart,
+                    secondaryLeadingIcon = R.drawable.bar_chart,
+                )
+            }
+            DSSection("DSCombinedButtonsVerticallyInverted | Trailing icon") {
+                CombinedButtonsExample(
+                    orientation = DSButtonsOrientation.VERTICAL_INVERTED,
+                    primaryTrailingIcon = R.drawable.bar_chart,
+                    secondaryTrailingIcon = R.drawable.bar_chart,
+                )
+            }
+            DSSection("DSCombinedButtonsVerticallyInverted | Both icons") {
+                CombinedButtonsExample(
+                    orientation = DSButtonsOrientation.VERTICAL_INVERTED,
                     primaryLeadingIcon = R.drawable.bar_chart,
                     secondaryLeadingIcon = R.drawable.bar_chart,
                     primaryTrailingIcon = R.drawable.bar_chart,

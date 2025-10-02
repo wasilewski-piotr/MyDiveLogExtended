@@ -1,11 +1,32 @@
 package org.itsolutions.mydivelog.design.components.button
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
+
+@Composable
+fun DSPrimaryButtonMaxWidth(
+    @StringRes text: Int,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    @DrawableRes leadingIcon: Int? = null,
+    @DrawableRes trailingIcon: Int? = null,
+    onClick: () -> Unit,
+) {
+    DSPrimaryButtonMaxWidth(
+        text = stringResource(text),
+        modifier = modifier,
+        enabled = enabled,
+        onClick = onClick,
+        trailingIcon = trailingIcon,
+        leadingIcon = leadingIcon
+    )
+}
 
 @Composable
 fun DSPrimaryButtonMaxWidth(
@@ -23,6 +44,25 @@ fun DSPrimaryButtonMaxWidth(
         onClick = onClick,
         trailingIcon = trailingIcon,
         leadingIcon = leadingIcon
+    )
+}
+
+@Composable
+fun DSPrimaryButton(
+    @StringRes text: Int,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    @DrawableRes leadingIcon: Int? = null,
+    @DrawableRes trailingIcon: Int? = null,
+    onClick: () -> Unit,
+) {
+    DSPrimaryButton(
+        text = stringResource(text),
+        onClick = onClick,
+        modifier = modifier,
+        enabled = enabled,
+        leadingIcon = leadingIcon,
+        trailingIcon = trailingIcon
     )
 }
 

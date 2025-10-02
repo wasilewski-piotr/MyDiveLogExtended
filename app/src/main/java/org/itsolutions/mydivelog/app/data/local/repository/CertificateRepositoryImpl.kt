@@ -15,12 +15,16 @@ class CertificateRepositoryImpl @Inject constructor(
     private val certificateDao: CertificateDao
 ) : CertificateRepository {
 
-    override suspend fun getDistinctOrganizations(): List<DiveOrganization> {
-        return certificateDao.getDistinctOrganizations()
+    override suspend fun getDistinctOrganizations(): Result<List<DiveOrganization>, DataError> {
+        return databaseCall(Any::class) {
+            certificateDao.getDistinctOrganizations()
+        }
     }
 
-    override suspend fun getAllCertifications(): List<Certificate> {
-        return certificateDao.getAllCertifications().map { it.toDomain() }
+    override suspend fun getAllCertifications(): Result<List<Certificate>, DataError> {
+        return databaseCall(Any::class) {
+            certificateDao.getAllCertifications().map { it.toDomain() }
+        }
     }
 
     override suspend fun createCertificate(certificate: Certificate): Result<Unit, DataError> {
