@@ -31,7 +31,7 @@ fun DSTitle(
 
 @Preview
 @Composable
-fun DSTitlePreview() {
+private fun DSTitlePreview() {
     MyDiveLogTheme {
         Column(Modifier.background(Color.White)) {
             DSTitle("Title")

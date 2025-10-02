@@ -17,5 +17,10 @@
         <activity android:name=".design.app.DSButtonPreviewActivity" />
         <activity android:name=".design.app.DSTopNavigationPreviewActivity" />
         <activity android:name=".design.app.DSCardPreviewActivity" />
+        <activity android:name=".design.app.DSProgressPreviewActivity"/>
+        <activity android:name=".design.app.DSStatesPreviewActivity"/>
+        <activity android:name=".design.app.DSTextPreviewActivity"/>
+        <activity android:name=".design.app.states.DSEmptyStatePreviewActivity"/>
+        <activity android:name=".design.app.states.DSErrorStatePreviewActivity"/>
     </application>
 </manifest>

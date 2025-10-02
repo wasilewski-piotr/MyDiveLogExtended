@@ -1,11 +1,14 @@
 package org.itsolutions.mydivelog.design.app
 
+import android.content.Context
+import android.content.Intent
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import org.itsolutions.mydivelog.design.app.states.DSEmptyStatePreviewActivity
+import org.itsolutions.mydivelog.design.app.states.DSErrorStatePreviewActivity
 import org.itsolutions.mydivelog.design.components.button.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
@@ -13,14 +16,13 @@ import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 import org.itsolutions.mydivelog.extensions.activityLauncher
 import org.itsolutions.mydivelog.extensions.verticalPadding
 
-internal class MyDiveLogDesignActivity : MyDiveLogThemedActivity() {
+internal class DSStatesPreviewActivity  : MyDiveLogThemedActivity() {
 
-    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     override fun TopBar() {
         DSTopNavigation(
-            title = "My Dive Log Design System",
-            type = DSTopNavigationType.EXIT,
+            title = "States",
+            type = DSTopNavigationType.BACK,
             onClick = ::finish
         )
     }
@@ -31,24 +33,16 @@ internal class MyDiveLogDesignActivity : MyDiveLogThemedActivity() {
         val context = LocalContext.current
 
         Column(modifier = Modifier.verticalPadding()) {
-            DSPrimaryButtonMaxWidth("Buttons") {
-                launch(DSButtonPreviewActivity.Companion.createInstance(context))
+            DSPrimaryButtonMaxWidth("Empty State") {
+                launch(DSEmptyStatePreviewActivity.Companion.createInstance(context))
             }
-            DSPrimaryButtonMaxWidth("Cards") {
-                launch(DSCardPreviewActivity.createInstance(context))
-            }
-            DSPrimaryButtonMaxWidth("Navigation") {
-                launch(DSNavigationPreviewActivity.createInstance(context))
-            }
-            DSPrimaryButtonMaxWidth("Progress") {
-                launch(DSProgressPreviewActivity.createInstance(context))
-            }
-            DSPrimaryButtonMaxWidth("States") {
-                launch(DSStatesPreviewActivity.createInstance(context))
-            }
-            DSPrimaryButtonMaxWidth("Text") {
-                launch(DSTextPreviewActivity.createInstance(context))
+            DSPrimaryButtonMaxWidth("Error State") {
+                launch(DSErrorStatePreviewActivity.createInstance(context))
             }
         }
+    }
+
+    companion object {
+        fun createInstance(context: Context) = Intent(context, DSStatesPreviewActivity::class.java)
     }
 }

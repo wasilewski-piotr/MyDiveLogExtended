@@ -18,7 +18,7 @@ import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 import org.itsolutions.mydivelog.extensions.verticalPadding
 
-class DSCardPreviewActivity : MyDiveLogThemedActivity() {
+internal class DSCardPreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
     override fun TopBar() {

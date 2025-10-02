@@ -25,7 +25,7 @@ import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 import org.itsolutions.mydivelog.extensions.verticalPadding
 
-class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
+internal class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable

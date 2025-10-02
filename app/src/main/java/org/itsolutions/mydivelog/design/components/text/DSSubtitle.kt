@@ -31,7 +31,7 @@ fun DSSubtitle(
 
 @Preview
 @Composable
-fun DSSubtitlePreview() {
+private fun DSSubtitlePreview() {
     MyDiveLogTheme {
         Column(Modifier.background(Color.White)) {
             DSSubtitle("Subtitle")
