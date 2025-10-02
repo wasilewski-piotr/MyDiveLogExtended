@@ -1,15 +1,19 @@
 package org.itsolutions.mydivelog.design.components.button
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import org.itsolutions.mydivelog.design.theme.spacings.DS
+import androidx.compose.ui.res.painterResource
+import org.itsolutions.mydivelog.design.components.spacers.HorizontalSpacer
+import org.itsolutions.mydivelog.design.theme.DesignSystem
 
 internal enum class DSButtonType {
     PRIMARY,
@@ -23,9 +27,26 @@ internal fun DSButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    @DrawableRes leadingIcon: Int? = null,
+    @DrawableRes trailingIcon: Int? = null,
 ) {
-    val content: @Composable RowScope.() -> Unit = { Text(text = text, style = MaterialTheme.typography.labelLarge) }
-    val padding = PaddingValues(horizontal = DS.spacing.lg, vertical = DS.spacing.sm)
+    val padding = PaddingValues(horizontal = DesignSystem.spacing.lg, vertical = DesignSystem.spacing.sm)
+    val content: @Composable RowScope.() -> Unit = {
+        leadingIcon?.let {
+            Icon(painterResource(it), null)
+            HorizontalSpacer(DesignSystem.spacing.xs)
+        }
+        Text(
+            text = text,
+            softWrap = true,
+            modifier = Modifier.weight(1f, fill = false),
+            style = MaterialTheme.typography.labelLarge
+        )
+        trailingIcon?.let {
+            HorizontalSpacer(DesignSystem.spacing.xs)
+            Icon(painterResource(it), null)
+        }
+    }
 
     when (variant) {
         DSButtonType.PRIMARY -> Button(
@@ -34,7 +55,7 @@ internal fun DSButton(
             enabled = enabled,
             contentPadding = padding,
             content = content,
-            shape = RoundedCornerShape(DS.radius.sm)
+            shape = RoundedCornerShape(DesignSystem.radius.sm)
         )
         DSButtonType.SECONDARY -> OutlinedButton(
             onClick = onClick,
@@ -42,7 +63,7 @@ internal fun DSButton(
             enabled = enabled,
             contentPadding = padding,
             content = content,
-            shape = RoundedCornerShape(DS.radius.sm)
+            shape = RoundedCornerShape(DesignSystem.radius.sm)
         )
     }
 }

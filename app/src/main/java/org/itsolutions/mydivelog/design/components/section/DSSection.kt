@@ -9,7 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import org.itsolutions.mydivelog.design.theme.spacings.DS
+import org.itsolutions.mydivelog.design.theme.DesignSystem
 
 @Composable
 internal fun DSSection(
@@ -17,18 +17,14 @@ internal fun DSSection(
     modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = DS.spacing.lg)
-    ) {
+    Column(modifier = modifier.fillMaxWidth()) {
         Text(
             text = title,
             style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(bottom = DS.spacing.xs)
+            modifier = Modifier.padding(bottom = DesignSystem.spacing.xs)
         )
         Column(
-            verticalArrangement = Arrangement.spacedBy(DS.spacing.md),
+            verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.md),
             content = content
         )
     }

@@ -4,14 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.components.navigation.DSBottomNavigationBar
@@ -19,6 +16,7 @@ import org.itsolutions.mydivelog.design.components.navigation.DSBottomNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
 import org.itsolutions.mydivelog.design.components.section.DSSection
+import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 
 class DSNavigationPreviewActivity : MyDiveLogThemedActivity() {
@@ -34,13 +32,9 @@ class DSNavigationPreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
     override fun Content(navController: NavHostController) {
-        val scrollState = rememberScrollState()
         var currentRoute by rememberSaveable { mutableStateOf("Two") }
 
-        Column(
-            modifier = Modifier.verticalScroll(scrollState),
-            verticalArrangement = Arrangement.SpaceEvenly
-        ) {
+        Column(verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xl)) {
             DSSection("DSTopNavigation") { DSTopNavigation("DSTopNavigationType.BACK", DSTopNavigationType.BACK) { } }
             DSSection("DSTopNavigation") { DSTopNavigation("DSTopNavigationType.EXIT", DSTopNavigationType.EXIT) { } }
             DSSection("DSBottomNavigation") {

@@ -1,13 +1,12 @@
 package org.itsolutions.mydivelog.design.theme.spacings
 
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Immutable
-data class Spacing(
+data class DSSpacing(
+    val xxs: Dp = 2.dp,
     val xs: Dp = 4.dp,
     val sm: Dp = 8.dp,
     val md: Dp = 12.dp,
@@ -18,7 +17,7 @@ data class Spacing(
 )
 
 @Immutable
-data class Radius(
+data class DSRadius(
     val xs: Dp = 4.dp,
     val sm: Dp = 8.dp,
     val md: Dp = 12.dp,
@@ -26,11 +25,3 @@ data class Radius(
     val xl: Dp = 28.dp,
     val pill: Dp = 1000.dp
 )
-
-internal val LocalSpacing = staticCompositionLocalOf { Spacing() }
-internal val LocalRadius  = staticCompositionLocalOf { Radius() }
-
-object DS {
-    val spacing @Composable get() = LocalSpacing.current
-    val radius   @Composable get() = LocalRadius.current
-}
