@@ -8,11 +8,9 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import org.itsolutions.mydivelog.design.theme.spacings.DS
-import org.itsolutions.mydivelog.design.theme.spacings.LocalRadius
-import org.itsolutions.mydivelog.design.theme.spacings.LocalSpacing
-import org.itsolutions.mydivelog.design.theme.spacings.Radius
-import org.itsolutions.mydivelog.design.theme.spacings.Spacing
+import org.itsolutions.mydivelog.design.theme.spacings.DSRadius
+import org.itsolutions.mydivelog.design.theme.spacings.DSSpacing
+import org.itsolutions.mydivelog.design.theme.typography.provideDSTypography
 
 @Composable
 fun MyDiveLogTheme(
@@ -20,19 +18,21 @@ fun MyDiveLogTheme(
     content: @Composable () -> Unit
 ) {
     val scheme = if (darkTheme) darkColorScheme() else lightColorScheme()
+    val dsTypography = provideDSTypography()
 
     CompositionLocalProvider(
-        LocalSpacing provides Spacing(),
-        LocalRadius provides Radius()
+        LocalSpacing provides DSSpacing(),
+        LocalRadius provides DSRadius(),
+        LocalTypography provides dsTypography
     ) {
         MaterialTheme(
             colorScheme = scheme,
             shapes = Shapes(
-                extraSmall = RoundedCornerShape(DS.radius.sm),
-                small = RoundedCornerShape(DS.radius.sm),
-                medium = RoundedCornerShape(DS.radius.md),
-                large = RoundedCornerShape(DS.radius.lg),
-                extraLarge = RoundedCornerShape(DS.radius.xl)
+                extraSmall = RoundedCornerShape(DesignSystem.radius.sm),
+                small = RoundedCornerShape(DesignSystem.radius.sm),
+                medium = RoundedCornerShape(DesignSystem.radius.md),
+                large = RoundedCornerShape(DesignSystem.radius.lg),
+                extraLarge = RoundedCornerShape(DesignSystem.radius.xl)
             ),
             content = content
         )

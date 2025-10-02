@@ -14,28 +14,28 @@ import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
-fun DSTitle(@StringRes text: Int, modifier: Modifier = Modifier) =
-    DSTitle(text = stringResource(text), modifier = modifier)
+fun DSSubtitle(@StringRes text: Int, modifier: Modifier = Modifier) =
+    DSSubtitle(text = stringResource(text), modifier = modifier)
 
 @Composable
-fun DSTitle(
+fun DSSubtitle(
     text: String,
     modifier: Modifier = Modifier
 ) {
     Text(
         text = text,
-        style = DesignSystem.typography.screenTitle,
+        style = DesignSystem.typography.screenSubtitle,
         modifier = modifier
     )
 }
 
 @Preview
 @Composable
-fun DSTitlePreview() {
+fun DSSubtitlePreview() {
     MyDiveLogTheme {
         Column(Modifier.background(Color.White)) {
-            DSTitle("Title")
-            DSTitle(R.string.bottom_navigation_certificates)
+            DSSubtitle("Subtitle")
+            DSSubtitle(R.string.bottom_navigation_certificates)
         }
     }
 }

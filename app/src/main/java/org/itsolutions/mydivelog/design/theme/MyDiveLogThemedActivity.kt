@@ -11,12 +11,13 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import org.itsolutions.mydivelog.design.theme.spacings.DS
 
 abstract class MyDiveLogThemedActivity : ComponentActivity() {
 
@@ -42,6 +43,7 @@ abstract class MyDiveLogThemedActivity : ComponentActivity() {
 
         setContent {
             val navController = rememberNavController()
+            val scrollState = rememberScrollState()
             MyDiveLogTheme {
                 Scaffold(
                     contentWindowInsets = WindowInsets.safeDrawing,
@@ -52,9 +54,15 @@ abstract class MyDiveLogThemedActivity : ComponentActivity() {
                         modifier = Modifier
                             .fillMaxSize()
                             .padding(padding)
-                            .padding(DS.spacing.lg)
+                            .padding(horizontal = DesignSystem.spacing.lg)
                     ) {
-                        Content(navController)
+                        Column(
+                            modifier = Modifier
+                                .verticalScroll(scrollState)
+                                .padding(vertical = DesignSystem.spacing.lg)
+                        ) {
+                            Content(navController)
+                        }
                     }
                 }
             }
