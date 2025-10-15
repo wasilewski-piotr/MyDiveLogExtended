@@ -21,7 +21,7 @@ import org.itsolutions.mydivelog.extensions.verticalPadding
 internal class DSCardPreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
-    override fun TopBar() {
+    override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
             title = "Cards",
             type = DSTopNavigationType.BACK,
@@ -30,7 +30,7 @@ internal class DSCardPreviewActivity : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content(navController: NavHostController) {
+    override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
         Column(
             modifier = Modifier.verticalPadding(),
             verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xl)

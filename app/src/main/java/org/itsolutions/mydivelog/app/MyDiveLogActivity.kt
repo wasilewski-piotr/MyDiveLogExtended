@@ -6,17 +6,17 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.HiltAndroidApp
-import org.itsolutions.mydivelog.app.presentation.menu.buddies.BuddiesViewModel
-import org.itsolutions.mydivelog.app.presentation.menu.certificates.CertificatesViewModel
-import org.itsolutions.mydivelog.app.presentation.menu.dives.DivesViewModel
-import org.itsolutions.mydivelog.app.presentation.menu.home.HomeViewModel
-import org.itsolutions.mydivelog.app.presentation.menu.statistics.StatisticsViewModel
+import org.itsolutions.mydivelog.app.presentation.buddies.BuddiesViewModel
+import org.itsolutions.mydivelog.app.presentation.certificates.CertificatesViewModel
+import org.itsolutions.mydivelog.app.presentation.dives.DivesViewModel
+import org.itsolutions.mydivelog.app.presentation.home.HomeViewModel
+import org.itsolutions.mydivelog.app.presentation.statistics.StatisticsViewModel
+import org.itsolutions.mydivelog.app.view.buddies.BuddiesScreen
+import org.itsolutions.mydivelog.app.view.certificates.CertificatesScreen
+import org.itsolutions.mydivelog.app.view.dives.DivesScreen
+import org.itsolutions.mydivelog.app.view.home.HomeScreen
 import org.itsolutions.mydivelog.app.view.menu.MyDiveLogMenu
-import org.itsolutions.mydivelog.app.view.menu.buddies.BuddiesScreen
-import org.itsolutions.mydivelog.app.view.menu.certificates.CertificatesScreen
-import org.itsolutions.mydivelog.app.view.menu.dives.DivesScreen
-import org.itsolutions.mydivelog.app.view.menu.home.HomeScreen
-import org.itsolutions.mydivelog.app.view.menu.statistics.StatisticsScreen
+import org.itsolutions.mydivelog.app.view.statistics.StatisticsScreen
 import org.itsolutions.mydivelog.design.components.navigation.DSBottomNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSBottomNavigationNavHost
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
@@ -35,7 +35,7 @@ class MyDiveLogActivity : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content(navController: NavHostController) {
+    override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
         DSBottomNavigationNavHost(
             navController = navController,
             startDestination = MyDiveLogMenu.HOME.item,

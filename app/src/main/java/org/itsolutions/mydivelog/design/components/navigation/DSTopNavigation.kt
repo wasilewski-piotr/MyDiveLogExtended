@@ -1,5 +1,6 @@
 package org.itsolutions.mydivelog.design.components.navigation
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -12,12 +13,27 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import org.itsolutions.mydivelog.R
 
 enum class DSTopNavigationType {
     EXIT,
     BACK,
+}
+
+@Composable
+fun DSTopNavigation(
+    @StringRes title: Int,
+    type: DSTopNavigationType,
+    onClick: () -> Unit
+) {
+    DSTopNavigation(
+        title = stringResource(title),
+        type = type,
+        onClick = onClick
+    )
 }
 
 @Composable
@@ -87,4 +103,16 @@ private fun DSTopNavigationBackPreview() {
 @Composable
 private fun DSTopNavigationExitPreview() {
     DSTopNavigation("Title", DSTopNavigationType.EXIT) { }
+}
+
+@Preview
+@Composable
+private fun DSTopNavigationStringResBackPreview() {
+    DSTopNavigation(R.string.certificates_screen_new_certificate, DSTopNavigationType.BACK) { }
+}
+
+@Preview
+@Composable
+private fun DSTopNavigationStringResExitPreview() {
+    DSTopNavigation(R.string.certificates_screen_new_certificate, DSTopNavigationType.EXIT) { }
 }

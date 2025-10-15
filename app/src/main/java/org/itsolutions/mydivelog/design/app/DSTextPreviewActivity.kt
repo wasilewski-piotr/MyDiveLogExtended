@@ -27,7 +27,7 @@ import org.itsolutions.mydivelog.extensions.verticalPadding
 internal class DSTextPreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
-    override fun TopBar() {
+    override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
             title = "Text",
             type = DSTopNavigationType.BACK,
@@ -36,7 +36,7 @@ internal class DSTextPreviewActivity : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content(navController: NavHostController) {
+    override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
         val scrollState = rememberScrollState()
         Column(
             modifier = Modifier.fillMaxWidth().verticalScroll(scrollState).verticalPadding(),

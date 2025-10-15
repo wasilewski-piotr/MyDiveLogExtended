@@ -13,7 +13,7 @@ import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 internal class DSErrorStatePreviewActivity  : MyDiveLogThemedActivity() {
 
     @Composable
-    override fun TopBar() {
+    override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
             title = "Error State",
             type = DSTopNavigationType.BACK,
@@ -22,7 +22,7 @@ internal class DSErrorStatePreviewActivity  : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content(navController: NavHostController) {
+    override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
         DSErrorState(
             error = DataError.Local.CERTIFICATE_ALREADY_EXISTS
         ) { }

@@ -17,7 +17,7 @@ internal class MyDiveLogDesignActivity : MyDiveLogThemedActivity() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    override fun TopBar() {
+    override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
             title = "My Dive Log Design System",
             type = DSTopNavigationType.EXIT,
@@ -26,7 +26,7 @@ internal class MyDiveLogDesignActivity : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content(navController: NavHostController) {
+    override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
         val launch = activityLauncher()
         val context = LocalContext.current
 

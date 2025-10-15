@@ -12,7 +12,7 @@ import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 internal class DSProgressPreviewActivity  : MyDiveLogThemedActivity() {
 
     @Composable
-    override fun TopBar() {
+    override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
             title = "Progress",
             type = DSTopNavigationType.BACK,
@@ -21,7 +21,7 @@ internal class DSProgressPreviewActivity  : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content(navController: NavHostController) {
+    override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
         DSCircularProgressIndicator()
     }
 

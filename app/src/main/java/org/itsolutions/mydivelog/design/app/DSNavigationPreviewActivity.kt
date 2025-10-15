@@ -24,7 +24,7 @@ import org.itsolutions.mydivelog.extensions.verticalPadding
 internal class DSNavigationPreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
-    override fun TopBar() {
+    override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
             title = "Top Navigation",
             type = DSTopNavigationType.BACK,
@@ -33,7 +33,7 @@ internal class DSNavigationPreviewActivity : MyDiveLogThemedActivity() {
     }
 
     @Composable
-    override fun Content(navController: NavHostController) {
+    override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
         var currentRoute by rememberSaveable { mutableStateOf("Two") }
 
         Column(
