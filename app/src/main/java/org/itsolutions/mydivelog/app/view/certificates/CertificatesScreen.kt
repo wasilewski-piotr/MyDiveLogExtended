@@ -1,5 +1,6 @@
-package org.itsolutions.mydivelog.app.view.menu.certificates
+package org.itsolutions.mydivelog.app.view.certificates
 
+import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -9,11 +10,13 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
-import org.itsolutions.mydivelog.app.presentation.menu.certificates.CertificatesViewModel
+import org.itsolutions.mydivelog.app.presentation.certificates.CertificatesViewModel
+import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateActivity
 import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation
 import org.itsolutions.mydivelog.design.components.button.DSCombinedButtons
 import org.itsolutions.mydivelog.design.components.button.DSPrimaryButtonMaxWidth
@@ -25,25 +28,39 @@ import org.itsolutions.mydivelog.design.components.states.DSErrorState
 import org.itsolutions.mydivelog.design.components.text.DSSubtitle
 import org.itsolutions.mydivelog.design.components.text.DSTitleWithSubtitle
 import org.itsolutions.mydivelog.design.theme.DesignSystem
+import org.itsolutions.mydivelog.extensions.activityLauncherWithResult
 import org.itsolutions.mydivelog.extensions.extendOutsideParent
 import org.itsolutions.mydivelog.extensions.topPadding
 
 @Composable
 fun CertificatesScreen(viewModel: CertificatesViewModel) {
-    val uiState = viewModel.uiState.collectAsState().value
-
-    when (uiState) {
-        CertificatesViewModel.UiState.Loading -> CertificatesProgressScreen()
-        is CertificatesViewModel.UiState.Ready -> {
-            CertificatesScreenContent(
-                organizations = uiState.organizations,
-                onPrimaryButtonClick = { /* TODO ADD */ },
-                onSecondaryButtonClick = { /* TODO ADD */ }
-            )
+    with(viewModel) {
+        val context = LocalContext.current
+        val uiState = viewModel.uiState.collectAsState().value
+        val launcher = activityLauncherWithResult {
+            if (it.resultCode == Activity.RESULT_OK) {
+                onRetry {
+                    getDistinctOrganizations()
+                }
+            }
         }
-        is CertificatesViewModel.UiState.Error -> {
-            DSErrorState(uiState.error) {
-//                TODO ADD ON RETRY
+
+        when (uiState) {
+            CertificatesViewModel.UiState.Loading -> CertificatesProgressScreen()
+            is CertificatesViewModel.UiState.Ready -> {
+                CertificatesScreenContent(
+                    organizations = uiState.organizations,
+                    onPrimaryButtonClick = { launcher(CreateCertificateActivity.createInstance(context)) },
+                    onSecondaryButtonClick = { /* TODO ADD */ },
+                    onCardClick = { /* TODO ADD */ }
+                )
+            }
+            is CertificatesViewModel.UiState.Error -> {
+                DSErrorState(uiState.error) {
+                    onRetry {
+                        getDistinctOrganizations()
+                    }
+                }
             }
         }
     }
@@ -59,6 +76,7 @@ private fun CertificatesScreenContent(
     organizations: List<DiveOrganization>,
     onPrimaryButtonClick: () -> Unit,
     onSecondaryButtonClick: () -> Unit,
+    onCardClick: (DiveOrganization) -> Unit,
 ) {
     Column(modifier = Modifier.topPadding()) {
         DSTitleWithSubtitle(
@@ -81,12 +99,15 @@ private fun CertificatesScreenContent(
             ),
             thickness = 1.dp
         )
-        CertificatesList(organizations)
+        CertificatesList(organizations, onCardClick)
     }
 }
 
 @Composable
-private fun CertificatesList(organizations: List<DiveOrganization>) {
+private fun CertificatesList(
+    organizations: List<DiveOrganization>,
+    onCardClick: (DiveOrganization) -> Unit,
+) {
     val scrollState = rememberScrollState()
     if (organizations.isEmpty()) {
         CertificatesEmptyStateScreen()
@@ -97,7 +118,7 @@ private fun CertificatesList(organizations: List<DiveOrganization>) {
         ) {
             organizations.forEach { organization ->
                 DSOrganizationCard(organization) {
-//                    TODO ADD ON CARD CLICK
+                    onCardClick(organization)
                 }
             }
         }
@@ -140,6 +161,7 @@ private fun CertificatesScreenPreview() {
     CertificatesScreenContent(
         organizations = emptyList(),
         onPrimaryButtonClick = { },
-        onSecondaryButtonClick = { }
+        onSecondaryButtonClick = { },
+        onCardClick = { }
     )
 }

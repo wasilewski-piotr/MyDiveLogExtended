@@ -1,10 +1,10 @@
-package org.itsolutions.mydivelog.app.presentation.menu.dives
+package org.itsolutions.mydivelog.app.presentation.buddies
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class DivesViewModel @Inject constructor(
+class BuddiesViewModel @Inject constructor(
 
 ) : ViewModel()

@@ -5,7 +5,7 @@ import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 import java.time.LocalDate
 
 @Entity(
-    tableName = "certifications",
+    tableName = "certificates",
     primaryKeys = ["certificateNumber", "organization"]
 )
 data class CertificateEntity(
