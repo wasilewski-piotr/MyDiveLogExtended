@@ -2,7 +2,7 @@
 <resources>
     <string name="certificates_screen_title">Your Certificates</string>
     <string name="certificates_screen_subtitle">Quick access to all your diving certificates and licenses.</string>
-    <string name="certificates_screen_my_organizations">Diving organizations you are affiliated with, based on your certifications.</string>
-    <string name="certificates_screen_new_certificate">New Certification</string>
-    <string name="certificates_screen_view_all_certificates">View All Certifications</string>
+    <string name="certificates_screen_my_organizations">Diving organizations you are affiliated with, based on your certificates.</string>
+    <string name="certificates_screen_new_certificate">New Certificate</string>
+    <string name="certificates_screen_view_all_certificates">View All Certificates</string>
 </resources>

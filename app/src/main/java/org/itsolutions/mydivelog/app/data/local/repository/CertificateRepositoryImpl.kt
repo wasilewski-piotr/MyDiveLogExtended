@@ -21,9 +21,9 @@ class CertificateRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getAllCertifications(): Result<List<Certificate>, DataError> {
+    override suspend fun getAllCertificates(): Result<List<Certificate>, DataError> {
         return databaseCall(Any::class) {
-            certificateDao.getAllCertifications().map { it.toDomain() }
+            certificateDao.getAllCertificates().map { it.toDomain() }
         }
     }
 

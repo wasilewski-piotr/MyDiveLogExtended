@@ -11,11 +11,11 @@ import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 @Dao
 interface CertificateDao {
 
-    @Query("SELECT DISTINCT organization FROM certifications")
+    @Query("SELECT DISTINCT organization FROM certificates")
     suspend fun getDistinctOrganizations(): List<DiveOrganization>
 
-    @Query("SELECT * FROM certifications")
-    suspend fun getAllCertifications(): List<CertificateEntity>
+    @Query("SELECT * FROM certificates")
+    suspend fun getAllCertificates(): List<CertificateEntity>
 
     @Insert(onConflict = OnConflictStrategy.Companion.ABORT)
     suspend fun createCertificate(certificate: CertificateEntity)

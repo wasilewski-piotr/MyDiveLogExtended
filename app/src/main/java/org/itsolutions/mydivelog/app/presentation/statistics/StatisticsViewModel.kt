@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.app.presentation.menu.statistics
+package org.itsolutions.mydivelog.app.presentation.statistics
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

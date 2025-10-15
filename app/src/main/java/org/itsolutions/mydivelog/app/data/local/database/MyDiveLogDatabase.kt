@@ -10,7 +10,7 @@ import org.itsolutions.mydivelog.app.data.local.database.entity.CertificateEntit
 
 @Database(
     entities = [CertificateEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 @TypeConverters(DateTimeConverter::class, DiveOrganizationConverter::class)
