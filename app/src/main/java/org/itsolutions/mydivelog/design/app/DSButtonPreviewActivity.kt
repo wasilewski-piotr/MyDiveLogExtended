@@ -29,7 +29,7 @@ internal class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    override fun TopBar() {
+    override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
             title = "Buttons",
             type = DSTopNavigationType.BACK,
@@ -58,7 +58,7 @@ internal class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
         )
 
     @Composable
-    override fun Content(navController: NavHostController) {
+    override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
         val scrollState = rememberScrollState()
         Column(
             modifier = Modifier.verticalScroll(scrollState).verticalPadding(),
