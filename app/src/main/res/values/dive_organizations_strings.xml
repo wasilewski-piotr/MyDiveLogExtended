@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="AIDA">International Association for the Development of Apnea</string>
+    <string name="APNEA_ACADEMY">School for the instruction and research of freediving</string>
+    <string name="CMAS">Confédération Mondiale des Activités Subaquatiques</string>
+    <string name="IANTD">International Association of Nitrox and Technical Divers</string>
+    <string name="IDF">International Diving Federation</string>
+    <string name="ITDA">International Technical Diving Activity</string>
+    <string name="MOLCHANOVS">Molchanovs International</string>
+    <string name="NAUI">National Association of Underwater Instructors</string>
     <string name="SSI">Scuba Schools International</string>
     <string name="PADI">Professional Association of Diving Instructors</string>
     <string name="GUE">Global Underwater Explorers</string>
