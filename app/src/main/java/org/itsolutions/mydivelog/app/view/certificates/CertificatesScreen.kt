@@ -31,6 +31,7 @@ import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.extensions.activityLauncherWithResult
 import org.itsolutions.mydivelog.extensions.extendOutsideParent
 import org.itsolutions.mydivelog.extensions.topPadding
+import org.itsolutions.mydivelog.extensions.verticalPadding
 
 @Composable
 fun CertificatesScreen(viewModel: CertificatesViewModel) {
@@ -113,7 +114,7 @@ private fun CertificatesList(
         CertificatesEmptyStateScreen()
     } else {
         Column(
-            modifier = Modifier.fillMaxSize().verticalScroll(scrollState).topPadding(),
+            modifier = Modifier.fillMaxSize().verticalScroll(scrollState).verticalPadding(),
             verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.md)
         ) {
             organizations.forEach { organization ->

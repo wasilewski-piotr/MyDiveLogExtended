@@ -12,7 +12,7 @@ import org.itsolutions.mydivelog.design.theme.DesignSystem
 fun Modifier.verticalPadding() = this.padding(vertical = DesignSystem.spacing.xl)
 
 @Composable
-fun Modifier.topPadding() = this.padding(top = DesignSystem.spacing.lg)
+fun Modifier.topPadding() = this.padding(top = DesignSystem.spacing.xl)
 
 fun Modifier.extendOutsideParent(
     start: Dp = 0.dp,
