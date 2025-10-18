@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.results.DataError
 import org.itsolutions.mydivelog.app.domain.model.results.toMessageResource
-import org.itsolutions.mydivelog.design.components.button.DSSecondaryButton
+import org.itsolutions.mydivelog.design.components.buttons.DSSecondaryButton
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme

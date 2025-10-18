@@ -8,8 +8,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
-import org.itsolutions.mydivelog.design.components.card.DSCard
-import org.itsolutions.mydivelog.design.components.card.DSOrganizationCard
+import org.itsolutions.mydivelog.design.components.cards.DSCard
+import org.itsolutions.mydivelog.design.components.cards.DSOrganizationCard
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
 import org.itsolutions.mydivelog.design.components.section.DSSection

@@ -11,6 +11,7 @@ sealed interface DataError : Error {
         DISK_FULL,
         ELEMENT_ALREADY_EXISTS,
         CERTIFICATE_ALREADY_EXISTS,
+        MISSING_CERTIFICATE_ISSUE_DATE,
         UNKNOWN
     }
 }

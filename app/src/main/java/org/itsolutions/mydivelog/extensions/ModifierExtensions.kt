@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.dp
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 
 @Composable
-fun Modifier.verticalPadding() = this.padding(vertical = DesignSystem.spacing.lg)
+fun Modifier.verticalPadding() = this.padding(vertical = DesignSystem.spacing.xl)
 
 @Composable
 fun Modifier.topPadding() = this.padding(top = DesignSystem.spacing.lg)

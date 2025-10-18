@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="certificate_card_certificate_data_title">Certificate data:</string>
+    <string name="certificate_card_certificate_issue_date">Date: %1$s</string>
+    <string name="certificate_card_certificate_issuer_name">Issued by: %1$s</string>
+    <string name="certificate_card_certificate_issuer_id">ID: %1$s</string>
+    <string name="certificate_card_certificate_number_title">Licence number:</string>
+</resources>

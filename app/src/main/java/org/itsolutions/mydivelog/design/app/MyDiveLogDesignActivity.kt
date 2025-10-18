@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
-import org.itsolutions.mydivelog.design.components.button.DSPrimaryButtonMaxWidth
+import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity

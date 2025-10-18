@@ -38,4 +38,8 @@ class CertificateRepositoryImpl @Inject constructor(
             certificateDao.deleteCertificate(certificate.toEntity())
         }
     }
+
+    override suspend fun checkCertificateExistsByNumber(certificateNumber: String): Boolean {
+        return certificateDao.checkCertificateExistsByNumber(certificateNumber)
+    }
 }

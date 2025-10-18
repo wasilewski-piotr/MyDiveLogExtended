@@ -17,10 +17,10 @@ import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 import org.itsolutions.mydivelog.app.presentation.certificates.CertificatesViewModel
 import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateActivity
-import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation
-import org.itsolutions.mydivelog.design.components.button.DSCombinedButtons
-import org.itsolutions.mydivelog.design.components.button.DSPrimaryButtonMaxWidth
-import org.itsolutions.mydivelog.design.components.card.DSOrganizationCard
+import org.itsolutions.mydivelog.design.components.buttons.DSButtonsOrientation
+import org.itsolutions.mydivelog.design.components.buttons.DSCombinedButtons
+import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
+import org.itsolutions.mydivelog.design.components.cards.DSOrganizationCard
 import org.itsolutions.mydivelog.design.components.progress.DSCircularProgressIndicator
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.components.states.DSEmptyState

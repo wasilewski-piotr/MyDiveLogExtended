@@ -13,7 +13,6 @@ data class DSSpacing(
     val lg: Dp = 16.dp,
     val xl: Dp = 24.dp,
     val xxl: Dp = 32.dp,
-    val screenGutter: Dp = 16.dp
 )
 
 @Immutable
