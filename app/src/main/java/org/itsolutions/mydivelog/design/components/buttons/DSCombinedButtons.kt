@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.design.components.button
+package org.itsolutions.mydivelog.design.components.buttons
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -13,10 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
-import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation.HORIZONTAL
-import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation.HORIZONTAL_INVERTED
-import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation.VERTICAL
-import org.itsolutions.mydivelog.design.components.button.DSButtonsOrientation.VERTICAL_INVERTED
+import org.itsolutions.mydivelog.design.components.buttons.DSButtonsOrientation.HORIZONTAL
+import org.itsolutions.mydivelog.design.components.buttons.DSButtonsOrientation.HORIZONTAL_INVERTED
+import org.itsolutions.mydivelog.design.components.buttons.DSButtonsOrientation.VERTICAL
+import org.itsolutions.mydivelog.design.components.buttons.DSButtonsOrientation.VERTICAL_INVERTED
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 
@@ -93,7 +93,7 @@ fun DSCombinedButtonsVertically(
     onPrimaryClick: () -> Unit,
     secondaryText: String,
     onSecondaryClick: () -> Unit,
-    orientation: DSButtonsOrientation,
+    orientation: DSButtonsOrientation = VERTICAL,
     @DrawableRes primaryLeadingIcon: Int? = null,
     @DrawableRes primaryTrailingIcon: Int? = null,
     @DrawableRes secondaryLeadingIcon: Int? = null,
@@ -106,13 +106,15 @@ fun DSCombinedButtonsVertically(
                     text = secondaryText,
                     onClick = onSecondaryClick,
                     leadingIcon = secondaryLeadingIcon,
-                    trailingIcon = secondaryTrailingIcon
+                    trailingIcon = secondaryTrailingIcon,
+                    verticalPadding = DesignSystem.spacing.sm
                 )
                 DSPrimaryButtonMaxWidth(
                     text = primaryText,
                     onClick = onPrimaryClick,
                     leadingIcon = primaryLeadingIcon,
                     trailingIcon = primaryTrailingIcon,
+                    verticalPadding = DesignSystem.spacing.sm
                 )
             }
             else -> {
@@ -121,12 +123,14 @@ fun DSCombinedButtonsVertically(
                     onClick = onPrimaryClick,
                     leadingIcon = primaryLeadingIcon,
                     trailingIcon = primaryTrailingIcon,
+                    verticalPadding = DesignSystem.spacing.sm
                 )
                 DSSecondaryButtonMaxWidth(
                     text = secondaryText,
                     onClick = onSecondaryClick,
                     leadingIcon = secondaryLeadingIcon,
-                    trailingIcon = secondaryTrailingIcon
+                    trailingIcon = secondaryTrailingIcon,
+                    verticalPadding = DesignSystem.spacing.sm
                 )
             }
         }
@@ -139,7 +143,7 @@ fun DSCombinedButtonsHorizontally(
     onPrimaryClick: () -> Unit,
     secondaryText: String,
     onSecondaryClick: () -> Unit,
-    orientation: DSButtonsOrientation,
+    orientation: DSButtonsOrientation = HORIZONTAL,
     @DrawableRes primaryLeadingIcon: Int? = null,
     @DrawableRes primaryTrailingIcon: Int? = null,
     @DrawableRes secondaryLeadingIcon: Int? = null,
@@ -156,14 +160,16 @@ fun DSCombinedButtonsHorizontally(
                     onClick = onPrimaryClick,
                     modifier = Modifier.weight(1f).fillMaxHeight(),
                     leadingIcon = primaryLeadingIcon,
-                    trailingIcon = primaryTrailingIcon
+                    trailingIcon = primaryTrailingIcon,
+                    verticalPadding = DesignSystem.spacing.sm
                 )
                 DSSecondaryButtonMaxWidth(
                     text = secondaryText,
                     onClick = onSecondaryClick,
                     modifier = Modifier.weight(1f).fillMaxHeight(),
                     leadingIcon = secondaryLeadingIcon,
-                    trailingIcon = secondaryTrailingIcon
+                    trailingIcon = secondaryTrailingIcon,
+                    verticalPadding = DesignSystem.spacing.sm
                 )
             }
             else -> {
@@ -172,14 +178,16 @@ fun DSCombinedButtonsHorizontally(
                     onClick = onSecondaryClick,
                     modifier = Modifier.weight(1f).fillMaxHeight(),
                     leadingIcon = secondaryLeadingIcon,
-                    trailingIcon = secondaryTrailingIcon
+                    trailingIcon = secondaryTrailingIcon,
+                    verticalPadding = DesignSystem.spacing.sm
                 )
                 DSPrimaryButtonMaxWidth(
                     text = primaryText,
                     onClick = onPrimaryClick,
                     modifier = Modifier.weight(1f).fillMaxHeight(),
                     leadingIcon = primaryLeadingIcon,
-                    trailingIcon = primaryTrailingIcon
+                    trailingIcon = primaryTrailingIcon,
+                    verticalPadding = DesignSystem.spacing.sm
                 )
             }
         }

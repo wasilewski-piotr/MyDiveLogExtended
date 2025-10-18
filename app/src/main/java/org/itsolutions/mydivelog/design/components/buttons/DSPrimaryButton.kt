@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.design.components.button
+package org.itsolutions.mydivelog.design.components.buttons
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
@@ -7,7 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import org.itsolutions.mydivelog.R
+import org.itsolutions.mydivelog.design.theme.DesignSystem
 
 @Composable
 fun DSPrimaryButtonMaxWidth(
@@ -16,6 +18,7 @@ fun DSPrimaryButtonMaxWidth(
     enabled: Boolean = true,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
+    verticalPadding: Dp = DesignSystem.spacing.md,
     onClick: () -> Unit,
 ) {
     DSPrimaryButtonMaxWidth(
@@ -24,7 +27,8 @@ fun DSPrimaryButtonMaxWidth(
         enabled = enabled,
         onClick = onClick,
         trailingIcon = trailingIcon,
-        leadingIcon = leadingIcon
+        leadingIcon = leadingIcon,
+        verticalPadding = verticalPadding
     )
 }
 
@@ -35,6 +39,7 @@ fun DSPrimaryButtonMaxWidth(
     enabled: Boolean = true,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
+    verticalPadding: Dp = DesignSystem.spacing.md,
     onClick: () -> Unit,
 ) {
     DSPrimaryButton(
@@ -43,7 +48,8 @@ fun DSPrimaryButtonMaxWidth(
         enabled = enabled,
         onClick = onClick,
         trailingIcon = trailingIcon,
-        leadingIcon = leadingIcon
+        leadingIcon = leadingIcon,
+        verticalPadding = verticalPadding
     )
 }
 
@@ -54,6 +60,7 @@ fun DSPrimaryButton(
     enabled: Boolean = true,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
+    verticalPadding: Dp = DesignSystem.spacing.md,
     onClick: () -> Unit,
 ) {
     DSPrimaryButton(
@@ -62,7 +69,8 @@ fun DSPrimaryButton(
         modifier = modifier,
         enabled = enabled,
         leadingIcon = leadingIcon,
-        trailingIcon = trailingIcon
+        trailingIcon = trailingIcon,
+        verticalPadding = verticalPadding
     )
 }
 
@@ -73,6 +81,7 @@ fun DSPrimaryButton(
     enabled: Boolean = true,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
+    verticalPadding: Dp = DesignSystem.spacing.md,
     onClick: () -> Unit,
 ) {
     DSButton(
@@ -82,7 +91,8 @@ fun DSPrimaryButton(
         modifier = modifier,
         enabled = enabled,
         leadingIcon = leadingIcon,
-        trailingIcon = trailingIcon
+        trailingIcon = trailingIcon,
+        verticalPadding = verticalPadding
     )
 }
 

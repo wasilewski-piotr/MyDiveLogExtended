@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.design.components.card
+package org.itsolutions.mydivelog.design.components.cards
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope

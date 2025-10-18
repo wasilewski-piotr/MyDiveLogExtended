@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="create_certificate_top_navigation_title">Create Certificate</string>
+    <string name="create_certificate_choose_your_diving_organization_title">Choose Your Diving Organization</string>
+    <string name="create_certificate_choose_your_diving_organization_subtitle">Choose the diving organization you are certified with to continue.</string>
+    <string name="create_certificate_enter_certificate_details_title">Add your certificate details</string>
+    <string name="create_certificate_enter_certificate_details_subtitle">Tell us your certificate name and its unique number to continue.</string>
+    <string name="create_certificate_enter_certificate_issuer_details_title">Add issuer information</string>
+    <string name="create_certificate_enter_certificate_issuer_details_subtitle">Tell us who issued your certificate, their ID, and the date it was granted.</string>
+    <string name="create_certificate_name_input_title">Certificate name</string>
+    <string name="create_certificate_name_input_placeholder">e.g. Open Water Diver</string>
+    <string name="create_certificate_number_input_title">Certificate unique number</string>
+    <string name="create_certificate_number_input_placeholder">e.g. 73642987G23-PL</string>
+    <string name="create_certificate_empty_certificate_name">Certificate name cannot be empty.</string>
+    <string name="create_certificate_empty_certificate_number">Certificate number cannot be empty.</string>
+    <string name="create_certificate_certificate_number_already_exists">A certificate with this number already exists.</string>
+    <string name="create_certificate_issuer_name_input_title">Issuer name</string>
+    <string name="create_certificate_issuer_name_input_placeholder">e.g. Steve Irwin</string>
+    <string name="create_certificate_empty_issuer_name">Issuer name cannot be empty.</string>
+    <string name="create_certificate_issuer_id_input_title">Issuer ID</string>
+    <string name="create_certificate_issuer_id_input_placeholder">e.g. #984032</string>
+    <string name="create_certificate_empty_issuer_id">Issuer ID cannot be empty.</string>
+    <string name="create_certificate_certificate_issue_date_input_title">Certificate issue date</string>
+    <string name="create_certificate_certificate_issue_date_input_placeholder">e.g. 14 May 2025</string>
+    <string name="create_certificate_empty_certificate_issue_date">Issue date cannot be empty.</string>
+    <string name="create_certificate_certificate_issue_date_in_future">Issue date cannot be in the future.</string>
+    <string name="create_certificate_review_data_title">Confirm certificate details</string>
+    <string name="create_certificate_review_data_subtitle">Please review the information you’ve entered below. Make sure all details are correct before saving your certificate.</string>
+    <string name="create_certificate_review_data_button_label">Save Certificate</string>
+    <string name="create_certificate_success_title">Success!</string>
+    <string name="create_certificate_success_subtitle">Your certificate has been successfully added. You can view its details or close this screen.</string>
+    <string name="create_certificate_success_button_label">See Certificate</string>
+</resources>

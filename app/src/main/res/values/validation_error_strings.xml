@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empty_field_error_text">This field cannot be empty.</string>
+    <string name="exists_in_database">This unique value already exists in database.</string>
+    <string name="selected_date_after_today">Selected date cannot be in the future.</string>
+</resources>

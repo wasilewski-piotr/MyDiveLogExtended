@@ -9,7 +9,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import org.itsolutions.mydivelog.design.components.card.DSCard
+import org.itsolutions.mydivelog.design.components.cards.DSCard
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 
 @Composable

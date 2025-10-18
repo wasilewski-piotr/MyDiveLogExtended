@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="empty_state_title">Oh No!</string>
-    <string name="empty_state_no_organizations_found">No organizations found. Add your diving organization to keep track of your certificates.</string>
+    <string name="empty_state_no_organizations_found">No organizations found. Add a certificate to discover your diving organizations.</string>
 </resources>

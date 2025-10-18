@@ -11,5 +11,6 @@ fun DataError.toMessageResource(): Int {
         DataError.Network.REQUEST_TIMEOUT -> TODO()
         DataError.Network.NO_INTERNET -> TODO()
         DataError.Network.UNKNOWN -> TODO()
+        DataError.Local.MISSING_CERTIFICATE_ISSUE_DATE -> R.string.error_certificate_is_missing_date
     }
 }

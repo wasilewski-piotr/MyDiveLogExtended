@@ -1,11 +1,13 @@
-package org.itsolutions.mydivelog.design.components.button
+package org.itsolutions.mydivelog.design.components.buttons
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import org.itsolutions.mydivelog.R
+import org.itsolutions.mydivelog.design.theme.DesignSystem
 
 @Composable
 fun DSSecondaryButtonMaxWidth(
@@ -14,6 +16,7 @@ fun DSSecondaryButtonMaxWidth(
     enabled: Boolean = true,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
+    verticalPadding: Dp = DesignSystem.spacing.md,
     onClick: () -> Unit,
 ) {
     DSSecondaryButton(
@@ -22,7 +25,8 @@ fun DSSecondaryButtonMaxWidth(
         enabled = enabled,
         onClick = onClick,
         leadingIcon = leadingIcon,
-        trailingIcon = trailingIcon
+        trailingIcon = trailingIcon,
+        verticalPadding = verticalPadding
     )
 }
 
@@ -33,6 +37,7 @@ fun DSSecondaryButton(
     enabled: Boolean = true,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
+    verticalPadding: Dp = DesignSystem.spacing.md,
     onClick: () -> Unit,
 ) {
     DSButton(
@@ -42,7 +47,8 @@ fun DSSecondaryButton(
         modifier = modifier,
         enabled = enabled,
         leadingIcon = leadingIcon,
-        trailingIcon = trailingIcon
+        trailingIcon = trailingIcon,
+        verticalPadding = verticalPadding
     )
 }
 

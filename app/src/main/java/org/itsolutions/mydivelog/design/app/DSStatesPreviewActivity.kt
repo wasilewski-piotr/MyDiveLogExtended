@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.design.app.states.DSEmptyStatePreviewActivity
 import org.itsolutions.mydivelog.design.app.states.DSErrorStatePreviewActivity
-import org.itsolutions.mydivelog.design.components.button.DSPrimaryButtonMaxWidth
+import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity

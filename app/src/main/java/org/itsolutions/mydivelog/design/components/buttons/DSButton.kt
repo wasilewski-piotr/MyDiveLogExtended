@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.design.components.button
+package org.itsolutions.mydivelog.design.components.buttons
 
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.PaddingValues
@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
 import org.itsolutions.mydivelog.design.components.spacers.HorizontalSpacer
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 
@@ -28,10 +29,11 @@ internal fun DSButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    verticalPadding: Dp = DesignSystem.spacing.md,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
 ) {
-    val padding = PaddingValues(horizontal = DesignSystem.spacing.lg, vertical = DesignSystem.spacing.sm)
+    val padding = PaddingValues(horizontal = DesignSystem.spacing.lg, vertical = verticalPadding)
     val content: @Composable RowScope.() -> Unit = {
         leadingIcon?.let {
             Icon(painterResource(it), null)
@@ -57,7 +59,7 @@ internal fun DSButton(
             enabled = enabled,
             contentPadding = padding,
             content = content,
-            shape = RoundedCornerShape(DesignSystem.radius.sm)
+            shape = RoundedCornerShape(DesignSystem.radius.md)
         )
         DSButtonType.SECONDARY -> OutlinedButton(
             onClick = onClick,
@@ -65,7 +67,7 @@ internal fun DSButton(
             enabled = enabled,
             contentPadding = padding,
             content = content,
-            shape = RoundedCornerShape(DesignSystem.radius.sm)
+            shape = RoundedCornerShape(DesignSystem.radius.md)
         )
     }
 }

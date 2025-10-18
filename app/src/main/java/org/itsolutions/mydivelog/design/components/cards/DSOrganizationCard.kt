@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.design.components.card
+package org.itsolutions.mydivelog.design.components.cards
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -32,7 +32,10 @@ fun DSOrganizationCard(
             verticalAlignment = Alignment.CenterVertically
         ) {
             with (organization) {
-                DSOrganizationCardImage()
+                DSOrganizationCardImage(
+                    organization = organization,
+                    modifier = Modifier.size(DesignSystem.radius.xxxxl)
+                )
                 HorizontalSpacer(DesignSystem.spacing.sm)
                 Column(modifier = Modifier.weight(1f)) {
                     DSCardTitleWithText(
@@ -50,16 +53,18 @@ fun DSOrganizationCard(
 }
 
 @Composable
-private fun DiveOrganization.DSOrganizationCardImage() {
+internal fun DSOrganizationCardImage(
+    organization: DiveOrganization,
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = Modifier
-            .size(DesignSystem.radius.xxxxl)
+        modifier = modifier
             .clip(RoundedCornerShape(DesignSystem.radius.md))
-            .background(backgroundColor),
+            .background(organization.backgroundColor),
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(logo),
+            painter = painterResource(organization.logo),
             contentDescription = null,
             modifier = Modifier.size(DesignSystem.radius.xxxl)
         )

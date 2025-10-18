@@ -8,23 +8,30 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
-fun DSSubtitle(@StringRes text: Int, modifier: Modifier = Modifier) =
-    DSSubtitle(text = stringResource(text), modifier = modifier)
+fun DSSubtitle(
+    @StringRes text: Int,
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign? = null
+) =
+    DSSubtitle(text = stringResource(text), modifier = modifier, textAlign = textAlign)
 
 @Composable
 fun DSSubtitle(
     text: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    textAlign: TextAlign? = null
 ) {
     Text(
         text = text,
         style = DesignSystem.typography.screenSubtitle,
+        textAlign = textAlign,
         modifier = modifier
     )
 }
