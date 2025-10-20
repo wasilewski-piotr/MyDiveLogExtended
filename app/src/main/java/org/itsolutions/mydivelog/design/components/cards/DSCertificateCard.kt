@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 import org.itsolutions.mydivelog.design.components.spacers.HorizontalSpacer
@@ -15,6 +16,7 @@ import org.itsolutions.mydivelog.design.components.text.DSCardText
 import org.itsolutions.mydivelog.design.components.text.DSCardTitle
 import org.itsolutions.mydivelog.design.components.text.DSCardTitleWithText
 import org.itsolutions.mydivelog.design.theme.DesignSystem
+import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -58,5 +60,20 @@ fun DSCertificateCard(
                 )
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun DSCertificateCardPreview() {
+    MyDiveLogTheme {
+        DSCertificateCard(
+            organization = DiveOrganization.SSI,
+            issueDate = LocalDate.now(),
+            issuerName = "Bob budowniczy",
+            issuerId = "696546",
+            certificateName = "Open Water Diver",
+            certificateNumber = "65465434N54654324-PL",
+        )
     }
 }

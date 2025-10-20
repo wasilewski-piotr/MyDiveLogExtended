@@ -9,8 +9,8 @@ import org.itsolutions.mydivelog.app.domain.validation.ValidationField
 @Composable
 fun DSTextInput(
     field: ValidationField<String>,
-    label: String,
     modifier: Modifier = Modifier,
+    label: String? = null,
     customError: ValidationOverrides = ValidationOverrides(),
     placeholder: String? = null,
     leadingIcon: @Composable (() -> Unit)? = null,

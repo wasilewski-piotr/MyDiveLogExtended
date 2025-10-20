@@ -1,12 +1,9 @@
 package org.itsolutions.mydivelog.design.components.text
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,9 +33,7 @@ fun DSCardTitle(
 @Composable
 private fun DSCardTitlePreview() {
     MyDiveLogTheme {
-        Column(Modifier.background(Color.White)) {
-            DSCardTitle("Card Title")
-            DSCardTitle(R.string.bottom_navigation_certificates)
-        }
+        DSCardTitle("Card Title")
+        DSCardTitle(R.string.bottom_navigation_certificates)
     }
 }

@@ -28,9 +28,9 @@ import org.itsolutions.mydivelog.design.theme.DesignSystem
 @Composable
 internal fun DSInput(
     value: String,
-    label: String,
     onValueChanged: (String) -> Unit,
     modifier: Modifier = Modifier,
+    label: String? = null,
     errorText: String? = null,
     placeholder: String? = null,
     leadingIcon: @Composable (() -> Unit)? = null,
@@ -46,7 +46,7 @@ internal fun DSInput(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xs)
     ) {
-        DSCardText(label)
+        label?.let { DSCardText(it) }
 
         Box(modifier = Modifier.fillMaxWidth()) {
             OutlinedTextField(

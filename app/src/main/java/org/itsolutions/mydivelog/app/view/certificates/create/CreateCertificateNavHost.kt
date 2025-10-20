@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import org.itsolutions.mydivelog.R
+import org.itsolutions.mydivelog.app.domain.model.results.toMessageResource
 import org.itsolutions.mydivelog.app.presentation.certificates.create.CreateCertificateViewModel
 import org.itsolutions.mydivelog.app.presentation.certificates.create.CreateCertificateViewModel.UiState
 import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateRoutes.ConfirmCertificateData
@@ -16,6 +17,8 @@ import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateR
 import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateRoutes.InputCertificateName
 import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateRoutes.SelectOrganization
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
+import org.itsolutions.mydivelog.design.components.progress.DSCircularProgressIndicator
+import org.itsolutions.mydivelog.design.components.states.error.DSErrorStateFullScreen
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity.TopBarSettings
 
 @Composable
@@ -27,6 +30,17 @@ internal fun TopBarSettings.CreateCertificateNavHost(
     val viewModel: CreateCertificateViewModel = hiltViewModel()
     val uiState = viewModel.uiState.collectAsStateWithLifecycle().value
     title(stringResource(R.string.create_certificate_top_navigation_title))
+
+    if (uiState is UiState.Error && navController.currentDestination != CreateCertificate) {
+        visibility(true)
+        action(onFinish)
+        title(stringResource(R.string.error))
+        DSErrorStateFullScreen(
+            subtitle = uiState.error.toMessageResource(),
+            primaryButtonText = R.string.close,
+            primaryButtonAction = onFinish,
+        )
+    }
 
     NavHost(navController, SelectOrganization) {
         composable<SelectOrganization> {
@@ -80,9 +94,13 @@ internal fun TopBarSettings.CreateCertificateNavHost(
                 is UiState.Error -> {
                     visibility(true)
                     title(stringResource(R.string.error))
-                    CreateCertificateErrorScreen(uiState.error) {
-                        viewModel.saveCertificateInDatabase()
-                    }
+                    DSErrorStateFullScreen(
+                        subtitle = uiState.error.toMessageResource(),
+                        primaryButtonText = R.string.close,
+                        primaryButtonAction = onFinish,
+                        secondaryButtonText = R.string.retry,
+                        secondaryButtonAction = { viewModel.saveCertificateInDatabase() }
+                    )
                 }
 
                 is UiState.Success -> {
@@ -96,7 +114,7 @@ internal fun TopBarSettings.CreateCertificateNavHost(
 
                 is UiState.CreatingCertificate -> {
                     visibility(false)
-                    CreateCertificateLoadingScreen()
+                    DSCircularProgressIndicator()
                 }
 
                 else -> { /* No op */ }

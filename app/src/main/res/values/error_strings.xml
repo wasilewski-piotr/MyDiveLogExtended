@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="error_title">Something went wrong!</string>
     <string name="error_certificate_already_exists">This organisation already has a certificate registered with the same number. To proceed, please provide a unique certificate number that does not duplicate an existing one.</string>
     <string name="error_certificate_is_missing_date">This certificate is missing its issue date. To proceed, please enter the date when the certificate was issued.</string>
 </resources>

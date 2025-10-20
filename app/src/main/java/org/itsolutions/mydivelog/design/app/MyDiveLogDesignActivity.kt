@@ -1,14 +1,19 @@
 package org.itsolutions.mydivelog.design.app
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import org.itsolutions.mydivelog.design.app.inputs.DSInputsPreviewActivity
+import org.itsolutions.mydivelog.design.app.pickers.DSPickersPreviewActivity
+import org.itsolutions.mydivelog.design.app.states.DSStatesPreviewActivity
 import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
+import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 import org.itsolutions.mydivelog.extensions.activityLauncher
 import org.itsolutions.mydivelog.extensions.verticalPadding
@@ -30,9 +35,18 @@ internal class MyDiveLogDesignActivity : MyDiveLogThemedActivity() {
         val launch = activityLauncher()
         val context = LocalContext.current
 
-        Column(modifier = Modifier.verticalPadding()) {
+        Column(
+            modifier = Modifier.verticalPadding(),
+            verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xs)
+        ) {
             DSPrimaryButtonMaxWidth("Buttons") {
-                launch(DSButtonPreviewActivity.Companion.createInstance(context))
+                launch(DSButtonPreviewActivity.createInstance(context))
+            }
+            DSPrimaryButtonMaxWidth("Inputs") {
+                launch(DSInputsPreviewActivity.createInstance(context))
+            }
+            DSPrimaryButtonMaxWidth("Pickers") {
+                launch(DSPickersPreviewActivity.createInstance(context))
             }
             DSPrimaryButtonMaxWidth("Cards") {
                 launch(DSCardPreviewActivity.createInstance(context))

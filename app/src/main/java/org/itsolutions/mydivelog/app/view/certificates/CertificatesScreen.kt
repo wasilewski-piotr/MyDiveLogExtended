@@ -23,11 +23,12 @@ import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWid
 import org.itsolutions.mydivelog.design.components.cards.DSOrganizationCard
 import org.itsolutions.mydivelog.design.components.progress.DSCircularProgressIndicator
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
-import org.itsolutions.mydivelog.design.components.states.DSEmptyState
-import org.itsolutions.mydivelog.design.components.states.DSErrorState
+import org.itsolutions.mydivelog.design.components.states.empty.DSEmptyState
+import org.itsolutions.mydivelog.design.components.states.error.DSErrorState
 import org.itsolutions.mydivelog.design.components.text.DSSubtitle
 import org.itsolutions.mydivelog.design.components.text.DSTitleWithSubtitle
 import org.itsolutions.mydivelog.design.theme.DesignSystem
+import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 import org.itsolutions.mydivelog.extensions.activityLauncherWithResult
 import org.itsolutions.mydivelog.extensions.extendOutsideParent
 import org.itsolutions.mydivelog.extensions.topPadding
@@ -159,10 +160,12 @@ private fun CertificatesScreenButtonsSection(
 @Preview
 @Composable
 private fun CertificatesScreenPreview() {
-    CertificatesScreenContent(
-        organizations = emptyList(),
-        onPrimaryButtonClick = { },
-        onSecondaryButtonClick = { },
-        onCardClick = { }
-    )
+    MyDiveLogTheme {
+        CertificatesScreenContent(
+            organizations = emptyList(),
+            onPrimaryButtonClick = { },
+            onSecondaryButtonClick = { },
+            onCardClick = { }
+        )
+    }
 }

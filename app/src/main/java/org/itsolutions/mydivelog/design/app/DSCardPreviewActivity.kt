@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 import org.itsolutions.mydivelog.design.components.cards.DSCard
+import org.itsolutions.mydivelog.design.components.cards.DSCertificateCard
 import org.itsolutions.mydivelog.design.components.cards.DSOrganizationCard
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
@@ -17,6 +18,7 @@ import org.itsolutions.mydivelog.design.components.text.DSCardTitleWithText
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 import org.itsolutions.mydivelog.extensions.verticalPadding
+import java.time.LocalDate
 
 internal class DSCardPreviewActivity : MyDiveLogThemedActivity() {
 
@@ -45,8 +47,23 @@ internal class DSCardPreviewActivity : MyDiveLogThemedActivity() {
             }
             DSSection("DSOrganizationCard") {
                 DSOrganizationCard(
+                    organization = DiveOrganization.SSI
+                )
+            }
+            DSSection("DSOrganizationCard | Clickable") {
+                DSOrganizationCard(
                     organization = DiveOrganization.SSI,
                     onClick = { }
+                )
+            }
+            DSSection("DSCertificateCard") {
+                DSCertificateCard(
+                    organization = DiveOrganization.SSI,
+                    issueDate = LocalDate.now(),
+                    issuerName = "Bob budowniczy",
+                    issuerId = "696546",
+                    certificateName = "Open Water Diver",
+                    certificateNumber = "65465434N54654324-PL",
                 )
             }
         }

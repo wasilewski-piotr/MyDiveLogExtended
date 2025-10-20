@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import org.itsolutions.mydivelog.design.components.spacers.HorizontalSpacer
 import org.itsolutions.mydivelog.design.theme.DesignSystem
@@ -70,4 +71,14 @@ internal fun DSButton(
             shape = RoundedCornerShape(DesignSystem.radius.md)
         )
     }
+}
+
+@Preview
+@Composable
+private fun DSButtonPreview() {
+    DSButton(
+        text = "Button",
+        variant = DSButtonType.PRIMARY,
+        onClick = { }
+    )
 }

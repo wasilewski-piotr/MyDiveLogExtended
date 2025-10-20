@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.design.components.states
+package org.itsolutions.mydivelog.design.components.states.empty
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image

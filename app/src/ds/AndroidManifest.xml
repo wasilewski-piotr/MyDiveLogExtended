@@ -16,9 +16,21 @@
         <activity android:name=".design.app.DSNavigationPreviewActivity"/>
         <activity android:name=".design.app.DSCardPreviewActivity"/>
         <activity android:name=".design.app.DSProgressPreviewActivity"/>
-        <activity android:name=".design.app.DSStatesPreviewActivity"/>
         <activity android:name=".design.app.DSTextPreviewActivity"/>
-        <activity android:name=".design.app.states.DSEmptyStatePreviewActivity"/>
-        <activity android:name=".design.app.states.DSErrorStatePreviewActivity"/>
+
+        <activity android:name=".design.app.pickers.DSPickersPreviewActivity"/>
+        <activity android:name=".design.app.pickers.date.DSDatePickerPreviewActivity"/>
+
+        <activity android:name=".design.app.inputs.DSInputsPreviewActivity"/>
+        <activity android:name=".design.app.inputs.text.DSTextInputPreviewActivity"/>
+        <activity android:name=".design.app.inputs.date.DSDateInputPreviewActivity"/>
+
+        <activity android:name=".design.app.states.DSStatesPreviewActivity"/>
+        <activity android:name=".design.app.states.empty.DSEmptyStatePreviewActivity"/>
+        <activity android:name=".design.app.states.error.DSErrorStatePreviewActivity"/>
+        <activity android:name=".design.app.states.error.DSErrorStateFullScreenPreviewActivity"/>
+        <activity android:name=".design.app.states.error.DSErrorStatesFullScreenPreviewActivity"/>
+        <activity android:name=".design.app.states.success.DSSuccessStateFullScreenPreviewActivity"/>
+        <activity android:name=".design.app.states.success.DSSuccessStatesFullScreenPreviewActivity"/>
     </application>
 </manifest>
