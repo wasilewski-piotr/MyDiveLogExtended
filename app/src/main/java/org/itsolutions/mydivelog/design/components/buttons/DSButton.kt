@@ -34,6 +34,7 @@ internal fun DSButton(
     enabled: Boolean = true,
     verticalPadding: Dp = DesignSystem.spacing.md,
     horizontalPadding: Dp = DesignSystem.spacing.lg,
+    iconSpacer: Dp = DesignSystem.spacing.xs,
     textStyle: TextStyle = MaterialTheme.typography.labelLarge,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
@@ -42,7 +43,7 @@ internal fun DSButton(
     val content: @Composable RowScope.() -> Unit = {
         leadingIcon?.let {
             Icon(painterResource(it), null, modifier = iconModifier)
-            HorizontalSpacer(DesignSystem.spacing.xs)
+            HorizontalSpacer(iconSpacer)
         }
         Text(
             text = text,
@@ -52,7 +53,7 @@ internal fun DSButton(
             style = textStyle
         )
         trailingIcon?.let {
-            HorizontalSpacer(DesignSystem.spacing.xs)
+            HorizontalSpacer(iconSpacer)
             Icon(painterResource(it), null, modifier = iconModifier)
         }
     }
