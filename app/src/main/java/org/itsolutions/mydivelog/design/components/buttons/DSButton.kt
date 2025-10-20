@@ -36,6 +36,7 @@ internal fun DSButton(
     horizontalPadding: Dp = DesignSystem.spacing.lg,
     iconSpacer: Dp = DesignSystem.spacing.xs,
     textStyle: TextStyle = MaterialTheme.typography.labelLarge,
+    shape: RoundedCornerShape = RoundedCornerShape(DesignSystem.radius.md),
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
 ) {
@@ -65,7 +66,7 @@ internal fun DSButton(
             enabled = enabled,
             contentPadding = padding,
             content = content,
-            shape = RoundedCornerShape(DesignSystem.radius.md)
+            shape = shape
         )
         DSButtonType.SECONDARY -> OutlinedButton(
             onClick = onClick,
@@ -73,7 +74,7 @@ internal fun DSButton(
             enabled = enabled,
             contentPadding = padding,
             content = content,
-            shape = RoundedCornerShape(DesignSystem.radius.md)
+            shape = shape
         )
     }
 }
