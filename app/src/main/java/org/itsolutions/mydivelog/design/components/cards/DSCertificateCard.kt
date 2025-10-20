@@ -1,8 +1,12 @@
 package org.itsolutions.mydivelog.design.components.cards
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
@@ -21,6 +25,7 @@ import org.itsolutions.mydivelog.design.components.text.DSCardTitle
 import org.itsolutions.mydivelog.design.components.text.DSCardTitleWithText
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
+import org.itsolutions.mydivelog.extensions.extendOutsideParent
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -54,7 +59,8 @@ fun DSCertificateCard(
     certificateNumber: String,
     organization: DiveOrganization
 ) {
-    val date = issueDate?.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(Locale.UK))
+    val date =
+        issueDate?.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(Locale.UK))
 
     DSCertificateCardContent(
         certificateName = certificateName,
@@ -63,7 +69,7 @@ fun DSCertificateCard(
     ) {
         DSCardTitle(R.string.certificate_card_certificate_data_title)
         date?.let {
-            DSCardText(stringResource(R.string.certificate_card_certificate_issue_date,date))
+            DSCardText(stringResource(R.string.certificate_card_certificate_issue_date, date))
         }
         DSCardText(stringResource(R.string.certificate_card_certificate_issuer_name, issuerName))
         DSCardText(stringResource(R.string.certificate_card_certificate_issuer_id, issuerId))
@@ -82,7 +88,10 @@ private fun DSCertificateCardContent(
     certificateDataContent: @Composable ColumnScope.() -> Unit = { }
 ) {
     DSCard(onClick = onClick, onLongClick = onLongClick) {
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        Row(
+            modifier = Modifier.height(IntrinsicSize.Min),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
             Row(Modifier.weight(1f)) {
                 DSOrganizationCardImage(
                     organization = organization,
@@ -96,15 +105,21 @@ private fun DSCertificateCardContent(
                     )
                     VerticalSpacer(DesignSystem.spacing.sm)
                     certificateDataContent()
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) {
-                            DSCardTitleWithText(
-                                title = R.string.certificate_card_certificate_number_title,
-                                text = certificateNumber
-                            )
-                        }
+                    Row(
+                        modifier = onClick?.let {
+                            Modifier
+                                .extendOutsideParent(end = DesignSystem.spacing.xl)
+                                .fillMaxWidth()
+                        } ?: Modifier.fillMaxWidth(),
+                        verticalAlignment = Alignment.Bottom,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        DSCardTitleWithText(
+                            title = R.string.certificate_card_certificate_number_title,
+                            text = certificateNumber
+                        )
                         if (allowCopy) {
-                            DSCopyButton(certificateNumber)
+                            DSCopyButton(textToCopy = certificateNumber)
                         }
                     }
                 }

@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import kotlinx.coroutines.delay
 import org.itsolutions.mydivelog.R
@@ -16,6 +17,7 @@ import org.itsolutions.mydivelog.R
 @Composable
 fun DSCopyButton(
     textToCopy: String,
+    modifier: Modifier = Modifier,
     initialText: String = "Copy",
     copiedText: String = "Copied",
     resetDelay: Long = 3000L,
@@ -37,7 +39,8 @@ fun DSCopyButton(
 
     DSSecondaryButtonSmall(
         text = label,
-        leadingIcon = icon
+        leadingIcon = icon,
+        modifier = modifier
     ) {
         clipboard.setPrimaryClip(clip)
         isCopied = true

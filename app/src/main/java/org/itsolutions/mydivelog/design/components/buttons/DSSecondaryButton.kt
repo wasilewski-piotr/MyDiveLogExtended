@@ -69,13 +69,14 @@ fun DSSecondaryButtonSmall(
         text = text,
         variant = DSButtonType.SECONDARY,
         onClick = onClick,
-        modifier = modifier.height(DesignSystem.spacing.xxl),
+        modifier = modifier.height(DesignSystem.spacing.xl),
         enabled = enabled,
         leadingIcon = leadingIcon,
         trailingIcon = trailingIcon,
         verticalPadding = DesignSystem.spacing.xxs,
         horizontalPadding = DesignSystem.spacing.sm,
         textStyle = MaterialTheme.typography.labelSmall,
+        iconSpacer = DesignSystem.spacing.xxs,
         iconModifier = Modifier.size(DesignSystem.size.small_icon)
     )
 }

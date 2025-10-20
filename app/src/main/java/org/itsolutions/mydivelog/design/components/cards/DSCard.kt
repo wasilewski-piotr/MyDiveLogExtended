@@ -22,10 +22,11 @@ fun DSCard(
 ) {
     Card(
         shape = RoundedCornerShape(DesignSystem.radius.md),
-        modifier = modifier.combinedClickable(
-            enabled = onClick != null,
-            onClick = onClick ?: { },
-            onLongClick = onLongClick
+        modifier = modifier
+            .combinedClickable(
+                enabled = onClick != null,
+                onClick = onClick ?: { },
+                onLongClick = onLongClick
         ),
         content = {
             Column(Modifier.padding(DesignSystem.spacing.md)) {
