@@ -1,21 +1,21 @@
-package org.itsolutions.mydivelog.design.app.states
+package org.itsolutions.mydivelog.design.app.states.empty
 
 import android.content.Context
 import android.content.Intent
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import org.itsolutions.mydivelog.app.domain.model.results.DataError
+import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
-import org.itsolutions.mydivelog.design.components.states.DSErrorState
+import org.itsolutions.mydivelog.design.components.states.empty.DSEmptyState
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 
-internal class DSErrorStatePreviewActivity  : MyDiveLogThemedActivity() {
+internal class DSEmptyStatePreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
     override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
-            title = "Error State",
+            title = "Empty State",
             type = DSTopNavigationType.BACK,
             onClick = ::finish
         )
@@ -23,12 +23,11 @@ internal class DSErrorStatePreviewActivity  : MyDiveLogThemedActivity() {
 
     @Composable
     override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
-        DSErrorState(
-            error = DataError.Local.CERTIFICATE_ALREADY_EXISTS
-        ) { }
+        DSEmptyState(R.string.empty_state_no_organizations_found)
     }
 
     companion object {
-        fun createInstance(context: Context) = Intent(context, DSErrorStatePreviewActivity::class.java)
+        fun createInstance(context: Context) =
+            Intent(context, DSEmptyStatePreviewActivity::class.java)
     }
 }

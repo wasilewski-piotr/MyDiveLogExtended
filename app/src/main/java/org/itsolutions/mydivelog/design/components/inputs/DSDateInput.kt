@@ -21,8 +21,8 @@ import java.util.Locale
 @Composable
 fun DSDateInput(
     field: ValidationField<LocalDate?>,
-    label: String,
     modifier: Modifier = Modifier,
+    label: String? = null,
     customError: ValidationOverrides = ValidationOverrides(),
     placeholder: String? = null,
     leadingIcon: @Composable (() -> Unit)? = null,

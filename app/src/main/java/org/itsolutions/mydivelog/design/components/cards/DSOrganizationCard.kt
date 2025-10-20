@@ -15,16 +15,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 import org.itsolutions.mydivelog.design.components.spacers.HorizontalSpacer
 import org.itsolutions.mydivelog.design.components.text.DSCardTitleWithText
 import org.itsolutions.mydivelog.design.theme.DesignSystem
+import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSOrganizationCard(
     organization: DiveOrganization,
-    onClick: () -> Unit
+    onClick: (() -> Unit)? = null
 ) {
     DSCard(onClick = onClick) {
         Row(
@@ -43,10 +45,12 @@ fun DSOrganizationCard(
                         text = stringResource(longName)
                     )
                 }
-                Icon(
-                    painter = painterResource(R.drawable.chevron_right),
-                    contentDescription = null,
-                )
+                onClick?.let {
+                    Icon(
+                        painter = painterResource(R.drawable.chevron_right),
+                        contentDescription = null,
+                    )
+                }
             }
         }
     }
@@ -68,5 +72,24 @@ internal fun DSOrganizationCardImage(
             contentDescription = null,
             modifier = Modifier.size(DesignSystem.radius.xxxl)
         )
+    }
+}
+
+@Preview
+@Composable
+private fun DSOrganizationCardClickablePreview() {
+    MyDiveLogTheme {
+        DSOrganizationCard(
+            organization = DiveOrganization.SSI,
+            onClick = { }
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun DSOrganizationCardPreview() {
+    MyDiveLogTheme {
+        DSOrganizationCard(organization = DiveOrganization.SSI)
     }
 }

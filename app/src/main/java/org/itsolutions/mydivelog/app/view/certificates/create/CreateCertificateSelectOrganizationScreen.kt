@@ -6,12 +6,14 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 import org.itsolutions.mydivelog.design.components.cards.DSOrganizationCard
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.components.text.DSTitleWithSubtitle
 import org.itsolutions.mydivelog.design.theme.DesignSystem
+import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 import org.itsolutions.mydivelog.extensions.verticalPadding
 
 @Composable
@@ -30,5 +32,13 @@ internal fun CreateCertificateSelectOrganizationScreen(onOrganizationClick: (Div
                 }
             }
         }
+    }
+}
+
+@Preview
+@Composable
+private fun CreateCertificateSelectOrganizationScreenPreview() {
+    MyDiveLogTheme {
+        CreateCertificateSelectOrganizationScreen { }
     }
 }

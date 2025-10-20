@@ -1,6 +1,8 @@
 package org.itsolutions.mydivelog.design.theme
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
@@ -8,6 +10,7 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.ui.Modifier
 import org.itsolutions.mydivelog.design.theme.spacings.DSRadius
 import org.itsolutions.mydivelog.design.theme.spacings.DSSpacing
 import org.itsolutions.mydivelog.design.theme.typography.provideDSTypography
@@ -34,7 +37,11 @@ fun MyDiveLogTheme(
                 large = RoundedCornerShape(DesignSystem.radius.lg),
                 extraLarge = RoundedCornerShape(DesignSystem.radius.xl)
             ),
-            content = content
+            content = {
+                Column(Modifier.background(scheme.background)) {
+                    content()
+                }
+            }
         )
     }
 }
