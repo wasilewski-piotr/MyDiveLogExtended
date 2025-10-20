@@ -18,8 +18,9 @@
         <activity android:name=".design.app.DSProgressPreviewActivity"/>
         <activity android:name=".design.app.DSTextPreviewActivity"/>
 
-        <activity android:name=".design.app.pickers.DSPickersPreviewActivity"/>
-        <activity android:name=".design.app.pickers.date.DSDatePickerPreviewActivity"/>
+        <activity android:name=".design.app.dialogs.DSDialogsPreviewActivity"/>
+        <activity android:name=".design.app.dialogs.date.DSDatePickerDialogPreviewActivity"/>
+        <activity android:name=".design.app.dialogs.alert.DSAlertDialogPreviewActivity"/>
 
         <activity android:name=".design.app.inputs.DSInputsPreviewActivity"/>
         <activity android:name=".design.app.inputs.text.DSTextInputPreviewActivity"/>

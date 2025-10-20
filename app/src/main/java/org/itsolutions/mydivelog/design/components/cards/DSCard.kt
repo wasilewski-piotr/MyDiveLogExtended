@@ -1,5 +1,6 @@
 package org.itsolutions.mydivelog.design.components.cards
 
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.padding
@@ -16,13 +17,16 @@ import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 fun DSCard(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
+    onLongClick: (() -> Unit)? = null,
     content: @Composable ColumnScope.() -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(DesignSystem.radius.md),
-        modifier = modifier,
-        enabled = onClick != null,
-        onClick = onClick ?: { },
+        modifier = modifier.combinedClickable(
+            enabled = onClick != null,
+            onClick = onClick ?: { },
+            onLongClick = onLongClick
+        ),
         content = {
             Column(Modifier.padding(DesignSystem.spacing.md)) {
                 content()

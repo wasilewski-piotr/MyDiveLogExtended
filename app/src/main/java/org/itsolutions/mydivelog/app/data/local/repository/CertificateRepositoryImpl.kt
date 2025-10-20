@@ -27,6 +27,12 @@ class CertificateRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getCertificatesForOrganization(diveOrganization: DiveOrganization): Result<List<Certificate>, DataError> {
+        return databaseCall(Any::class) {
+            certificateDao.getCertificatesForOrganization(diveOrganization).map { it.toDomain() }
+        }
+    }
+
     override suspend fun createCertificate(certificate: Certificate): Result<Unit, DataError> {
         return databaseCall(certificate::class) {
             certificateDao.createCertificate(certificate.toEntity())

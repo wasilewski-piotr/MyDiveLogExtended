@@ -27,3 +27,18 @@ data class DSRadius(
     val xxxxl: Dp = 60.dp,
     val pill: Dp = 1000.dp
 )
+
+@Immutable
+data class DSSize(
+    val xxs: Dp = 2.dp,
+    val xs: Dp = 4.dp,
+    val sm: Dp = 8.dp,
+    val md: Dp = 12.dp,
+    val small_icon: Dp = 16.dp,
+    val lg: Dp = 20.dp,
+    val xl: Dp = 28.dp,
+    val xxl: Dp = 32.dp,
+    val xxxl: Dp = 48.dp,
+    val xxxxl: Dp = 60.dp,
+    val main_icon_size: Dp = 100.dp
+)

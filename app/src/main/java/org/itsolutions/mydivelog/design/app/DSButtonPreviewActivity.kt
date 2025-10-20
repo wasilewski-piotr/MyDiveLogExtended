@@ -18,6 +18,7 @@ import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButton
 import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.buttons.DSSecondaryButton
 import org.itsolutions.mydivelog.design.components.buttons.DSSecondaryButtonMaxWidth
+import org.itsolutions.mydivelog.design.components.buttons.DSSecondaryButtonSmall
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
 import org.itsolutions.mydivelog.design.components.section.DSSection
@@ -100,6 +101,26 @@ internal class DSButtonPreviewActivity : MyDiveLogThemedActivity() {
             DSSection("DSPrimaryButtonMaxWidth | Both icons") {
                 DSPrimaryButtonMaxWidth(
                     text = "Primary Button Max Width",
+                    leadingIcon = R.drawable.bar_chart,
+                    trailingIcon = R.drawable.bar_chart
+                ) { }
+            }
+            DSSection("DSSecondaryButtonSmall") { DSSecondaryButtonSmall("Secondary Button Small") { } }
+            DSSection("DSSecondaryButtonSmall | Leading icon") {
+                DSSecondaryButtonSmall(
+                    text = "Secondary Button Small",
+                    leadingIcon = R.drawable.bar_chart
+                ) { }
+            }
+            DSSection("DSSecondaryButtonSmall | Trailing icon") {
+                DSSecondaryButtonSmall(
+                    text = "Secondary Button Small",
+                    trailingIcon = R.drawable.bar_chart
+                ) { }
+            }
+            DSSection("DSSecondaryButtonSmall | Both icons") {
+                DSSecondaryButtonSmall(
+                    text = "Secondary Button Small",
                     leadingIcon = R.drawable.bar_chart,
                     trailingIcon = R.drawable.bar_chart
                 ) { }

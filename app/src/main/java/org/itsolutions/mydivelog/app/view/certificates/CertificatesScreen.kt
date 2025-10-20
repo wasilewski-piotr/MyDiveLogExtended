@@ -17,6 +17,7 @@ import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 import org.itsolutions.mydivelog.app.presentation.certificates.CertificatesViewModel
 import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateActivity
+import org.itsolutions.mydivelog.app.view.certificates.list.CertificatesListActivity
 import org.itsolutions.mydivelog.design.components.buttons.DSButtonsOrientation
 import org.itsolutions.mydivelog.design.components.buttons.DSCombinedButtons
 import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
@@ -38,7 +39,7 @@ import org.itsolutions.mydivelog.extensions.verticalPadding
 fun CertificatesScreen(viewModel: CertificatesViewModel) {
     with(viewModel) {
         val context = LocalContext.current
-        val uiState = viewModel.uiState.collectAsState().value
+        val uiState = uiState.collectAsState().value
         val launcher = activityLauncherWithResult {
             if (it.resultCode == Activity.RESULT_OK) {
                 onRetry {
@@ -48,13 +49,13 @@ fun CertificatesScreen(viewModel: CertificatesViewModel) {
         }
 
         when (uiState) {
-            CertificatesViewModel.UiState.Loading -> CertificatesProgressScreen()
+            CertificatesViewModel.UiState.Loading -> DSCircularProgressIndicator()
             is CertificatesViewModel.UiState.Ready -> {
                 CertificatesScreenContent(
                     organizations = uiState.organizations,
                     onPrimaryButtonClick = { launcher(CreateCertificateActivity.createInstance(context)) },
-                    onSecondaryButtonClick = { /* TODO ADD */ },
-                    onCardClick = { /* TODO ADD */ }
+                    onSecondaryButtonClick = { launcher(CertificatesListActivity.createInstance(context)) },
+                    onCardClick = { launcher(CertificatesListActivity.createInstance(context, it)) }
                 )
             }
             is CertificatesViewModel.UiState.Error -> {
@@ -66,11 +67,6 @@ fun CertificatesScreen(viewModel: CertificatesViewModel) {
             }
         }
     }
-}
-
-@Composable
-private fun CertificatesProgressScreen() {
-    DSCircularProgressIndicator()
 }
 
 @Composable
@@ -112,7 +108,7 @@ private fun CertificatesList(
 ) {
     val scrollState = rememberScrollState()
     if (organizations.isEmpty()) {
-        CertificatesEmptyStateScreen()
+        DSEmptyState(R.string.empty_state_no_organizations_found)
     } else {
         Column(
             modifier = Modifier.fillMaxSize().verticalScroll(scrollState).verticalPadding(),
@@ -125,11 +121,6 @@ private fun CertificatesList(
             }
         }
     }
-}
-
-@Composable
-private fun CertificatesEmptyStateScreen() {
-    DSEmptyState(R.string.empty_state_no_organizations_found)
 }
 
 @Composable

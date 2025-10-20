@@ -5,4 +5,5 @@
     <string name="certificates_screen_my_organizations">Diving organizations you are affiliated with, based on your certificates.</string>
     <string name="certificates_screen_new_certificate">New Certificate</string>
     <string name="certificates_screen_view_all_certificates">View All Certificates</string>
+    <string name="certificates_screen_view_certificates_by_organization">View %1$s Certificates</string>
 </resources>

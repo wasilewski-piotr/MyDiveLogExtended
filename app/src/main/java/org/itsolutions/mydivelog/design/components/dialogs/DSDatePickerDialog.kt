@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.design.components.pickers
+package org.itsolutions.mydivelog.design.components.dialogs
 
 import androidx.compose.material3.DatePicker
 import androidx.compose.material3.DatePickerDialog
