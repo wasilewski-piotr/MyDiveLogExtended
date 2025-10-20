@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="certificates_list_screen_title">Your Diving Certificates</string>
+    <string name="certificates_list_by_organization_screen_title">Your %1$s Certificates</string>
+    <string name="certificates_list_screen_subtitle">The list below shows all your diving certificates obtained from various diving organizations.\nThey are sorted by the date of issue, with the most recent displayed first.</string>
+    <string name="certificates_list_by_organization_screen_subtitle">The list below shows your diving certificates obtained in %1$s organization.\nThey are sorted by the date of issue, with the most recent displayed first.</string>
+    <string name="certificates_list_is_empty_description">Looks like you haven’t added any certificates yet. Add one to track your diving progress.</string>
+    <string name="certificates_list_delete_certificate_dialog_title">Delete this certificate?</string>
+    <string name="certificates_list_delete_certificate_dialog_subtitle">Deleting this certificate will permanently remove it and all dives associated with it. This action cannot be undone. Are you sure you want to continue?</string>
+</resources>

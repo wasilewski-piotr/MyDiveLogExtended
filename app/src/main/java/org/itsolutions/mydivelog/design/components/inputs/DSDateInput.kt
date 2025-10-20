@@ -12,7 +12,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import org.itsolutions.mydivelog.app.domain.validation.ValidationField
-import org.itsolutions.mydivelog.design.components.pickers.DSDatePicker
+import org.itsolutions.mydivelog.design.components.dialogs.DSDatePicker
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle

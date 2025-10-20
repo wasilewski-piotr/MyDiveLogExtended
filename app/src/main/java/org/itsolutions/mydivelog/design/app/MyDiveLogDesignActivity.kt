@@ -7,8 +7,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavHostController
+import org.itsolutions.mydivelog.design.app.dialogs.DSDialogsPreviewActivity
 import org.itsolutions.mydivelog.design.app.inputs.DSInputsPreviewActivity
-import org.itsolutions.mydivelog.design.app.pickers.DSPickersPreviewActivity
 import org.itsolutions.mydivelog.design.app.states.DSStatesPreviewActivity
 import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
@@ -45,8 +45,8 @@ internal class MyDiveLogDesignActivity : MyDiveLogThemedActivity() {
             DSPrimaryButtonMaxWidth("Inputs") {
                 launch(DSInputsPreviewActivity.createInstance(context))
             }
-            DSPrimaryButtonMaxWidth("Pickers") {
-                launch(DSPickersPreviewActivity.createInstance(context))
+            DSPrimaryButtonMaxWidth("Dialogs") {
+                launch(DSDialogsPreviewActivity.createInstance(context))
             }
             DSPrimaryButtonMaxWidth("Cards") {
                 launch(DSCardPreviewActivity.createInstance(context))

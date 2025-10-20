@@ -11,11 +11,14 @@ import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
 @Dao
 interface CertificateDao {
 
-    @Query("SELECT organization FROM certificates GROUP BY organization ORDER BY COUNT(organization) DESC")
+    @Query("SELECT organization FROM certificates GROUP BY organization ORDER BY COUNT(organization) DESC, MAX(issueDate) DESC")
     suspend fun getDistinctOrganizations(): List<DiveOrganization>
 
     @Query("SELECT * FROM certificates")
     suspend fun getAllCertificates(): List<CertificateEntity>
+
+    @Query("SELECT * FROM certificates WHERE organization = :diveOrganization ORDER BY issueDate DESC")
+    suspend fun getCertificatesForOrganization(diveOrganization: DiveOrganization): List<CertificateEntity>
 
     @Query("SELECT EXISTS(SELECT 1 FROM certificates WHERE certificateNumber = :certificateNumber LIMIT 1)")
     suspend fun checkCertificateExistsByNumber(certificateNumber: String): Boolean

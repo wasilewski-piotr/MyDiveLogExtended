@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import org.itsolutions.mydivelog.design.theme.spacings.DSRadius
+import org.itsolutions.mydivelog.design.theme.spacings.DSSize
 import org.itsolutions.mydivelog.design.theme.spacings.DSSpacing
 import org.itsolutions.mydivelog.design.theme.typography.provideDSTypography
 
@@ -26,7 +27,8 @@ fun MyDiveLogTheme(
     CompositionLocalProvider(
         LocalSpacing provides DSSpacing(),
         LocalRadius provides DSRadius(),
-        LocalTypography provides dsTypography
+        LocalTypography provides dsTypography,
+        LocalSize provides DSSize()
     ) {
         MaterialTheme(
             colorScheme = scheme,

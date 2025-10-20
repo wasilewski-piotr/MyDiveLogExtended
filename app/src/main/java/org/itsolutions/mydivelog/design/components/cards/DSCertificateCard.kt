@@ -1,15 +1,19 @@
 package org.itsolutions.mydivelog.design.components.cards
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.DiveOrganization
+import org.itsolutions.mydivelog.design.components.buttons.DSCopyButton
 import org.itsolutions.mydivelog.design.components.spacers.HorizontalSpacer
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.components.text.DSCardText
@@ -24,39 +28,91 @@ import java.util.Locale
 
 @Composable
 fun DSCertificateCard(
+    certificateName: String,
+    certificateNumber: String,
+    organization: DiveOrganization,
+    allowCopy: Boolean = true,
+    onClick: (() -> Unit)? = null,
+    onLongClick: (() -> Unit)? = null,
+) {
+    DSCertificateCardContent(
+        certificateName = certificateName,
+        certificateNumber = certificateNumber,
+        organization = organization,
+        onClick = onClick,
+        onLongClick = onLongClick,
+        allowCopy = allowCopy
+    )
+}
+
+@Composable
+fun DSCertificateCard(
     issueDate: LocalDate?,
     issuerName: String,
     issuerId: String,
     certificateName: String,
     certificateNumber: String,
-    organization: DiveOrganization,
-    onClick: (() -> Unit)? = null
+    organization: DiveOrganization
 ) {
     val date = issueDate?.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(Locale.UK))
 
-    DSCard(onClick = onClick) {
-        Row(Modifier.padding(DesignSystem.spacing.xs)) {
-            DSOrganizationCardImage(
-                organization = organization,
-                modifier = Modifier.size(DesignSystem.radius.xxxxl)
-            )
-            HorizontalSpacer(DesignSystem.spacing.sm)
-            Column(Modifier.weight(1f)) {
-                DSCardTitleWithText(
-                    title = certificateName,
-                    text = organization.longName
+    DSCertificateCardContent(
+        certificateName = certificateName,
+        certificateNumber = certificateNumber,
+        organization = organization
+    ) {
+        DSCardTitle(R.string.certificate_card_certificate_data_title)
+        date?.let {
+            DSCardText(stringResource(R.string.certificate_card_certificate_issue_date,date))
+        }
+        DSCardText(stringResource(R.string.certificate_card_certificate_issuer_name, issuerName))
+        DSCardText(stringResource(R.string.certificate_card_certificate_issuer_id, issuerId))
+        VerticalSpacer(DesignSystem.spacing.sm)
+    }
+}
+
+@Composable
+private fun DSCertificateCardContent(
+    certificateName: String,
+    certificateNumber: String,
+    organization: DiveOrganization,
+    onClick: (() -> Unit)? = null,
+    onLongClick: (() -> Unit)? = null,
+    allowCopy: Boolean = false,
+    certificateDataContent: @Composable ColumnScope.() -> Unit = { }
+) {
+    DSCard(onClick = onClick, onLongClick = onLongClick) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(Modifier.weight(1f)) {
+                DSOrganizationCardImage(
+                    organization = organization,
+                    modifier = Modifier.size(DesignSystem.size.xxxxl)
                 )
-                VerticalSpacer(DesignSystem.spacing.sm)
-                DSCardTitle(R.string.certificate_card_certificate_data_title)
-                date?.let {
-                    DSCardText(stringResource(R.string.certificate_card_certificate_issue_date,date))
+                HorizontalSpacer(DesignSystem.spacing.sm)
+                Column(Modifier.weight(1f)) {
+                    DSCardTitleWithText(
+                        title = certificateName,
+                        text = organization.longName
+                    )
+                    VerticalSpacer(DesignSystem.spacing.sm)
+                    certificateDataContent()
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Column(Modifier.weight(1f)) {
+                            DSCardTitleWithText(
+                                title = R.string.certificate_card_certificate_number_title,
+                                text = certificateNumber
+                            )
+                        }
+                        if (allowCopy) {
+                            DSCopyButton(certificateNumber)
+                        }
+                    }
                 }
-                DSCardText(stringResource(R.string.certificate_card_certificate_issuer_name, issuerName))
-                DSCardText(stringResource(R.string.certificate_card_certificate_issuer_id, issuerId))
-                VerticalSpacer(DesignSystem.spacing.sm)
-                DSCardTitleWithText(
-                    title = R.string.certificate_card_certificate_number_title,
-                    text = certificateNumber
+            }
+            onClick?.let {
+                Icon(
+                    painter = painterResource(R.drawable.chevron_right),
+                    contentDescription = null,
                 )
             }
         }
@@ -74,6 +130,31 @@ private fun DSCertificateCardPreview() {
             issuerId = "696546",
             certificateName = "Open Water Diver",
             certificateNumber = "65465434N54654324-PL",
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun DSCertificateCardSmallPreview() {
+    MyDiveLogTheme {
+        DSCertificateCard(
+            organization = DiveOrganization.SSI,
+            certificateName = "Open Water Diver",
+            certificateNumber = "65465434N54654324-PL"
+        )
+    }
+}
+
+@Preview
+@Composable
+private fun DSCertificateCardSmallClickablePreview() {
+    MyDiveLogTheme {
+        DSCertificateCard(
+            organization = DiveOrganization.SSI,
+            certificateName = "Open Water Diver",
+            certificateNumber = "65465434N54654324-PL",
+            onClick = { }
         )
     }
 }

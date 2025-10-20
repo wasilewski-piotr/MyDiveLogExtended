@@ -13,5 +13,6 @@
         </activity>
 
         <activity android:name=".app.view.certificates.create.CreateCertificateActivity"/>
+        <activity android:name=".app.view.certificates.list.CertificatesListActivity"/>
     </application>
 </manifest>

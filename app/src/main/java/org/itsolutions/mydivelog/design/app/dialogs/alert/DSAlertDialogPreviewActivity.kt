@@ -1,4 +1,4 @@
-package org.itsolutions.mydivelog.design.app.pickers.date
+package org.itsolutions.mydivelog.design.app.dialogs.alert
 
 import android.content.Context
 import android.content.Intent
@@ -7,20 +7,20 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import org.itsolutions.mydivelog.design.components.dialogs.DSAlertDialog
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigation
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
-import org.itsolutions.mydivelog.design.components.pickers.DSDatePicker
 import org.itsolutions.mydivelog.design.components.section.DSSection
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity
 import org.itsolutions.mydivelog.extensions.verticalPadding
 
-internal class DSDatePickerPreviewActivity : MyDiveLogThemedActivity() {
+internal class DSAlertDialogPreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
     override fun TopBar(type: DSTopNavigationType, title: String, action: () -> Unit) {
         DSTopNavigation(
-            title = "Date Picker",
+            title = "Alert Dialog",
             type = DSTopNavigationType.BACK,
             onClick = ::finish
         )
@@ -32,17 +32,21 @@ internal class DSDatePickerPreviewActivity : MyDiveLogThemedActivity() {
             modifier = Modifier.Companion.verticalPadding(),
             verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xl)
         ) {
-            DSSection("DSDatePicker") {
-                DSDatePicker(
-                    onDateSelected = { finish() },
-                    onDismissPicker = { finish() }
+            DSSection("DSAlertDialog") {
+                DSAlertDialog(
+                    title = "Dialog",
+                    description = "Dialog Description",
+                    dismissButtonText = "Dismiss",
+                    confirmButtonText = "Confirm",
+                    onDismissDialog = ::finish,
+                    onConfirm = ::finish
                 )
             }
         }
     }
 
+
     companion object {
-        fun createInstance(context: Context) =
-            Intent(context, DSDatePickerPreviewActivity::class.java)
+        fun createInstance(context: Context) = Intent(context, DSAlertDialogPreviewActivity::class.java)
     }
 }

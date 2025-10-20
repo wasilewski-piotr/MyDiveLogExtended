@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -29,15 +30,18 @@ internal fun DSButton(
     variant: DSButtonType,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
+    iconModifier: Modifier = Modifier,
     enabled: Boolean = true,
     verticalPadding: Dp = DesignSystem.spacing.md,
+    horizontalPadding: Dp = DesignSystem.spacing.lg,
+    textStyle: TextStyle = MaterialTheme.typography.labelLarge,
     @DrawableRes leadingIcon: Int? = null,
     @DrawableRes trailingIcon: Int? = null,
 ) {
-    val padding = PaddingValues(horizontal = DesignSystem.spacing.lg, vertical = verticalPadding)
+    val padding = PaddingValues(horizontal = horizontalPadding, vertical = verticalPadding)
     val content: @Composable RowScope.() -> Unit = {
         leadingIcon?.let {
-            Icon(painterResource(it), null)
+            Icon(painterResource(it), null, modifier = iconModifier)
             HorizontalSpacer(DesignSystem.spacing.xs)
         }
         Text(
@@ -45,11 +49,11 @@ internal fun DSButton(
             softWrap = true,
             modifier = Modifier.weight(1f, fill = false),
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.labelLarge
+            style = textStyle
         )
         trailingIcon?.let {
             HorizontalSpacer(DesignSystem.spacing.xs)
-            Icon(painterResource(it), null)
+            Icon(painterResource(it), null, modifier = iconModifier)
         }
     }
 

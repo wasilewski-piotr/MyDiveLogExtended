@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -33,8 +36,9 @@ internal class DSCardPreviewActivity : MyDiveLogThemedActivity() {
 
     @Composable
     override fun Content(navController: NavHostController, topBarSettings: TopBarSettings) {
+        val scrollState = rememberScrollState()
         Column(
-            modifier = Modifier.verticalPadding(),
+            modifier = Modifier.fillMaxSize().verticalPadding().verticalScroll(scrollState),
             verticalArrangement = Arrangement.spacedBy(DesignSystem.spacing.xl)
         ) {
             DSSection("DSCard") {
@@ -53,6 +57,21 @@ internal class DSCardPreviewActivity : MyDiveLogThemedActivity() {
             DSSection("DSOrganizationCard | Clickable") {
                 DSOrganizationCard(
                     organization = DiveOrganization.SSI,
+                    onClick = { }
+                )
+            }
+            DSSection("DSCertificateCard | Small") {
+                DSCertificateCard(
+                    organization = DiveOrganization.SSI,
+                    certificateName = "Open Water Diver",
+                    certificateNumber = "65465434N54654324-PL",
+                )
+            }
+            DSSection("DSCertificateCard | Small Clickable") {
+                DSCertificateCard(
+                    organization = DiveOrganization.SSI,
+                    certificateName = "Open Water Diver",
+                    certificateNumber = "65465434N54654324-PL",
                     onClick = { }
                 )
             }
