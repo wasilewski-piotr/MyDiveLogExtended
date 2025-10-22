@@ -1,6 +1,5 @@
 package org.itsolutions.mydivelog.design.components.states.error
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -15,6 +14,7 @@ import org.itsolutions.mydivelog.app.domain.model.results.DataError
 import org.itsolutions.mydivelog.app.domain.model.results.toMessageResource
 import org.itsolutions.mydivelog.design.components.buttons.DSSecondaryButton
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
+import org.itsolutions.mydivelog.design.components.spacers.WeightedSpacer
 import org.itsolutions.mydivelog.design.components.states.empty.DSEmptyStateContent
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
@@ -22,21 +22,35 @@ import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 @Composable
 fun DSErrorState(
     error: DataError,
+    buttonLabel: String = stringResource(R.string.try_again),
     onRetry: () -> Unit
 ) {
-    val message = error.toMessageResource()
+    DSErrorState(
+        message = stringResource(error.toMessageResource()),
+        buttonLabel = buttonLabel,
+        onRetry = onRetry
+    )
+}
+
+@Composable
+fun DSErrorState(
+    message: String,
+    buttonLabel: String = stringResource(R.string.try_again),
+    onRetry: () -> Unit
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        DSEmptyStateContent(stringResource(message))
+        WeightedSpacer(0.5f)
+        DSEmptyStateContent(message)
         VerticalSpacer(DesignSystem.spacing.sm)
         DSSecondaryButton(
             modifier = Modifier.padding(horizontal = 100.dp),
-            text = stringResource(R.string.try_again),
+            text = buttonLabel,
             onClick = onRetry
         )
+        WeightedSpacer()
     }
 }
 

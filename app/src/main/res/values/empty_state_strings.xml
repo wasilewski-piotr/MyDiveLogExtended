@@ -4,4 +4,5 @@
     <string name="empty_state_no_organizations_found">No organizations found. Add a certificate to discover your diving organizations.</string>
     <string name="empty_state_no_certificates_found">You don’t have any certificates yet. Add your first certificate to start building your dive log.</string>
     <string name="empty_state_no_certificates_found_for_this_organization">It appears that you don’t have any certificates registered under %1$s. Add a new certificate to keep your diving records complete and up to date.</string>
+    <string name="empty_state_no_certificates_found_for_this_organization_button_label">Create certificate under %1$s organization</string>
 </resources>

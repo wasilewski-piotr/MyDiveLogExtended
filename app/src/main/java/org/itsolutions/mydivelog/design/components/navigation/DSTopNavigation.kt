@@ -43,24 +43,28 @@ fun DSTopNavigation(
     onClick: () -> Unit
 ) {
     Column {
-        DSTopNavigationBar(title, type, onClick)
-        HorizontalDivider(thickness = 1.dp)
+        DSTopNavigationBar(type, title, onClick)
+        if (title.isNotBlank()) {
+            HorizontalDivider(thickness = 1.dp)
+        }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun DSTopNavigationBar(
-    title: String,
     type: DSTopNavigationType,
+    title: String? = null,
     onClick: () -> Unit
 ) {
     CenterAlignedTopAppBar(
         title = {
-            Text(
-                text = title,
-                style = MaterialTheme.typography.bodyLarge
-            )
+            title?.let {
+                Text(
+                    text = it,
+                    style = MaterialTheme.typography.bodyLarge
+                )
+            }
         },
         navigationIcon = {
             when (type) {
@@ -96,13 +100,13 @@ private fun DSTopNavigationIcon(
 @Preview
 @Composable
 private fun DSTopNavigationBackPreview() {
-    DSTopNavigation("Title", DSTopNavigationType.BACK) { }
+    DSTopNavigation(title = "Title", type = DSTopNavigationType.BACK) { }
 }
 
 @Preview
 @Composable
 private fun DSTopNavigationExitPreview() {
-    DSTopNavigation("Title", DSTopNavigationType.EXIT) { }
+    DSTopNavigation(title = "Title", type = DSTopNavigationType.EXIT) { }
 }
 
 @Preview
