@@ -12,7 +12,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSSecondaryButtonMaxWidth(
@@ -26,7 +25,9 @@ fun DSSecondaryButtonMaxWidth(
 ) {
     DSSecondaryButton(
         text = text,
-        modifier = Modifier.fillMaxWidth().then(modifier),
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(modifier),
         enabled = enabled,
         onClick = onClick,
         leadingIcon = leadingIcon,
@@ -83,146 +84,122 @@ fun DSSecondaryButtonSmall(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonMaxWidthPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButtonMaxWidth(
-            text = "Secondary Button Max Width",
-            onClick = { }
-        )
-    }
+    DSSecondaryButtonMaxWidth(
+        text = "Secondary Button Max Width",
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonMaxWidthWithLeadingIconPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButtonMaxWidth(
-            text = "Secondary Button Max Width",
-            leadingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButtonMaxWidth(
+        text = "Secondary Button Max Width",
+        leadingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonMaxWidthWithTrailingIconPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButtonMaxWidth(
-            text = "Secondary Button Max Width",
-            trailingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButtonMaxWidth(
+        text = "Secondary Button Max Width",
+        trailingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonMaxWidthWithIconsPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButtonMaxWidth(
-            text = "Secondary Button Max Width",
-            trailingIcon = R.drawable.bar_chart,
-            leadingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButtonMaxWidth(
+        text = "Secondary Button Max Width",
+        trailingIcon = R.drawable.bar_chart,
+        leadingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButton(
-            text = "Secondary Button",
-            onClick = { }
-        )
-    }
+    DSSecondaryButton(
+        text = "Secondary Button",
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonWithLeadingIconPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButton(
-            text = "Secondary Button",
-            leadingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButton(
+        text = "Secondary Button",
+        leadingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonWithTrailingIconPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButton(
-            text = "Secondary Button",
-            trailingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButton(
+        text = "Secondary Button",
+        trailingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonWithIconsPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButton(
-            text = "Secondary Button",
-            trailingIcon = R.drawable.bar_chart,
-            leadingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButton(
+        text = "Secondary Button",
+        trailingIcon = R.drawable.bar_chart,
+        leadingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonSmallPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButtonSmall(
-            text = "Secondary Button",
-            onClick = { }
-        )
-    }
+    DSSecondaryButtonSmall(
+        text = "Secondary Button",
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonSmallWithLeadingIconPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButtonSmall(
-            text = "Secondary Button",
-            leadingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButtonSmall(
+        text = "Secondary Button",
+        leadingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonSmallWithTrailingIconPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButtonSmall(
-            text = "Secondary Button",
-            trailingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButtonSmall(
+        text = "Secondary Button",
+        trailingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSecondaryButtonSmallWithIconsPreview() {
-    MyDiveLogTheme {
-        DSSecondaryButtonSmall(
-            text = "Secondary Button",
-            trailingIcon = R.drawable.bar_chart,
-            leadingIcon = R.drawable.bar_chart,
-            onClick = { }
-        )
-    }
+    DSSecondaryButtonSmall(
+        text = "Secondary Button",
+        trailingIcon = R.drawable.bar_chart,
+        leadingIcon = R.drawable.bar_chart,
+        onClick = { }
+    )
 }

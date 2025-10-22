@@ -9,7 +9,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSCardText(@StringRes text: Int, modifier: Modifier = Modifier) =
@@ -29,11 +28,9 @@ fun DSCardText(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSCardTextPreview() {
-    MyDiveLogTheme {
-        DSCardText("Card Text")
-        DSCardText(R.string.bottom_navigation_certificates)
-    }
+    DSCardText("Card Text")
+    DSCardText(R.string.bottom_navigation_certificates)
 }

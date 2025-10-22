@@ -9,7 +9,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSCardTitle(@StringRes text: Int, modifier: Modifier = Modifier) =
@@ -29,11 +28,9 @@ fun DSCardTitle(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSCardTitlePreview() {
-    MyDiveLogTheme {
-        DSCardTitle("Card Title")
-        DSCardTitle(R.string.bottom_navigation_certificates)
-    }
+    DSCardTitle("Card Title")
+    DSCardTitle(R.string.bottom_navigation_certificates)
 }

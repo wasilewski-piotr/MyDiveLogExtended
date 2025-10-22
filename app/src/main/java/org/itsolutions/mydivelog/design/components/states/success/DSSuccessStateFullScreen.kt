@@ -10,7 +10,6 @@ import org.itsolutions.mydivelog.design.components.buttons.DSButtonsOrientation
 import org.itsolutions.mydivelog.design.components.buttons.DSCombinedButtons
 import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.states.DSStateFullScreen
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSSuccessStateFullScreen(
@@ -81,46 +80,40 @@ fun DSSuccessStateFullScreen(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSuccessStatePreviewSingleButton() {
-    MyDiveLogTheme {
-        DSSuccessStateFullScreen(
-            title = "Success",
-            subtitle = "You did it!",
-            primaryButtonText = "Continue",
-            primaryButtonAction = { }
-        )
-    }
+    DSSuccessStateFullScreen(
+        title = "Success",
+        subtitle = "You did it!",
+        primaryButtonText = "Continue",
+        primaryButtonAction = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSuccessStatePreviewCombinedButtonsHorizontal() {
-    MyDiveLogTheme {
-        DSSuccessStateFullScreen(
-            title = "Success",
-            subtitle = "You did it!",
-            primaryButtonText = "Continue",
-            primaryButtonAction = { },
-            secondaryButtonText = "Close",
-            secondaryButtonAction = { }
-        )
-    }
+    DSSuccessStateFullScreen(
+        title = "Success",
+        subtitle = "You did it!",
+        primaryButtonText = "Continue",
+        primaryButtonAction = { },
+        secondaryButtonText = "Close",
+        secondaryButtonAction = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSuccessStatePreviewCombinedButtonsVertical() {
-    MyDiveLogTheme {
-        DSSuccessStateFullScreen(
-            title = "Success",
-            subtitle = "You did it!",
-            primaryButtonText = "Continue",
-            primaryButtonAction = { },
-            secondaryButtonText = "Close",
-            secondaryButtonAction = { },
-            orientation = DSButtonsOrientation.VERTICAL
-        )
-    }
+    DSSuccessStateFullScreen(
+        title = "Success",
+        subtitle = "You did it!",
+        primaryButtonText = "Continue",
+        primaryButtonAction = { },
+        secondaryButtonText = "Close",
+        secondaryButtonAction = { },
+        orientation = DSButtonsOrientation.VERTICAL
+    )
 }

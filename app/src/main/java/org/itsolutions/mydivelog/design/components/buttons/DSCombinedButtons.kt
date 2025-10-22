@@ -194,7 +194,7 @@ fun DSCombinedButtonsHorizontally(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonsCombinedVerticallyPreview() {
     DSCombinedButtonsVertically(
@@ -206,7 +206,7 @@ private fun DSButtonsCombinedVerticallyPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonsCombinedVerticallyInvertedPreview() {
     DSCombinedButtonsVertically(
@@ -218,7 +218,7 @@ private fun DSButtonsCombinedVerticallyInvertedPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonsCombinedVerticallyWithIconsPreview() {
     Column {
@@ -256,7 +256,7 @@ private fun DSButtonsCombinedVerticallyWithIconsPreview() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonsCombinedVerticallyInvertedWithIconsPreview() {
     Column {
@@ -294,7 +294,7 @@ private fun DSButtonsCombinedVerticallyInvertedWithIconsPreview() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonsCombinedHorizontallyPreview() {
     DSCombinedButtonsHorizontally(
@@ -306,7 +306,7 @@ private fun DSButtonsCombinedHorizontallyPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonsCombinedHorizontallyInvertedPreview() {
     DSCombinedButtonsHorizontally(
@@ -318,7 +318,7 @@ private fun DSButtonsCombinedHorizontallyInvertedPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonsCombinedHorizontallyWithIconsPreview() {
     Column {
@@ -356,7 +356,7 @@ private fun DSButtonsCombinedHorizontallyWithIconsPreview() {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonsCombinedHorizontallyInvertedWithIconsPreview() {
     Column {

@@ -16,6 +16,7 @@ import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateR
 import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateRoutes.SelectOrganization
 import org.itsolutions.mydivelog.design.components.navigation.DSTopNavigationType
 import org.itsolutions.mydivelog.design.components.progress.DSCircularProgressIndicator
+import org.itsolutions.mydivelog.design.components.section.DSTopSection
 import org.itsolutions.mydivelog.design.components.states.error.DSErrorStateFullScreen
 import org.itsolutions.mydivelog.design.theme.MyDiveLogThemedActivity.TopBarSettings
 
@@ -35,11 +36,13 @@ internal fun TopBarSettings.CreateCertificateNavHost(
         visibility(true)
         action(onFinish)
         title(null)
-        DSErrorStateFullScreen(
-            subtitle = uiState.error.toMessageResource(),
-            primaryButtonText = R.string.close,
-            primaryButtonAction = onFinish,
-        )
+        DSTopSection {
+            DSErrorStateFullScreen(
+                subtitle = uiState.error.toMessageResource(),
+                primaryButtonText = R.string.close,
+                primaryButtonAction = onFinish,
+            )
+        }
     }
 
     NavHost(navController, startDestination) {
@@ -90,34 +93,36 @@ internal fun TopBarSettings.CreateCertificateNavHost(
         composable<CreateCertificate> {
             action(onFinish)
             type(DSTopNavigationType.EXIT)
-            when (uiState) {
-                is UiState.Error -> {
-                    visibility(true)
-                    title(null)
-                    DSErrorStateFullScreen(
-                        subtitle = uiState.error.toMessageResource(),
-                        primaryButtonText = R.string.close,
-                        primaryButtonAction = onFinish,
-                        secondaryButtonText = R.string.retry,
-                        secondaryButtonAction = { viewModel.saveCertificateInDatabase() }
-                    )
-                }
+            DSTopSection {
+                when (uiState) {
+                    is UiState.Error -> {
+                        visibility(true)
+                        title(null)
+                        DSErrorStateFullScreen(
+                            subtitle = uiState.error.toMessageResource(),
+                            primaryButtonText = R.string.close,
+                            primaryButtonAction = onFinish,
+                            secondaryButtonText = R.string.retry,
+                            secondaryButtonAction = { viewModel.saveCertificateInDatabase() }
+                        )
+                    }
 
-                is UiState.Success -> {
-                    visibility(true)
-                    title(null)
-                    CreateCertificateSuccessScreen(
-                        seeCertificate = { /* TODO add see cert details */ },
-                        onClose = onFinish
-                    )
-                }
+                    is UiState.Success -> {
+                        visibility(true)
+                        title(null)
+                        CreateCertificateSuccessScreen(
+                            seeCertificate = { /* TODO add see cert details */ },
+                            onClose = onFinish
+                        )
+                    }
 
-                is UiState.CreatingCertificate -> {
-                    visibility(false)
-                    DSCircularProgressIndicator()
-                }
+                    is UiState.CreatingCertificate -> {
+                        visibility(false)
+                        DSCircularProgressIndicator()
+                    }
 
-                else -> { /* No op */ }
+                    else -> { /* No op */ }
+                }
             }
         }
     }

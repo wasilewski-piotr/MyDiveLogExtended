@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -51,13 +50,11 @@ internal fun DSDatePicker(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSDatePickerPreview() {
-    MyDiveLogTheme {
-        DSDatePicker(
-            onDismissPicker = { },
-            onDateSelected = { }
-        )
-    }
+    DSDatePicker(
+        onDismissPicker = { },
+        onDateSelected = { }
+    )
 }

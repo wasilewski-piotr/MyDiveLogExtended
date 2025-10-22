@@ -4,7 +4,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.app.presentation.buddies.BuddiesViewModel
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun BuddiesScreen(viewModel: BuddiesViewModel) {
@@ -16,10 +15,8 @@ private fun BuddiesScreenContent() {
     Text("Buddies")
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun BuddiesScreenPreview() {
-    MyDiveLogTheme {
-        BuddiesScreenContent()
-    }
+    BuddiesScreenContent()
 }

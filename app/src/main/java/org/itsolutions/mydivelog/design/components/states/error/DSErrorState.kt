@@ -17,7 +17,6 @@ import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.components.spacers.WeightedSpacer
 import org.itsolutions.mydivelog.design.components.states.empty.DSEmptyStateContent
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSErrorState(
@@ -54,13 +53,11 @@ fun DSErrorState(
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-@Preview
 private fun DSErrorStatePreview() {
-    MyDiveLogTheme {
-        DSErrorState(
-            error = DataError.Local.CERTIFICATE_ALREADY_EXISTS,
-            onRetry = { }
-        )
-    }
+    DSErrorState(
+        error = DataError.Local.CERTIFICATE_ALREADY_EXISTS,
+        onRetry = { }
+    )
 }

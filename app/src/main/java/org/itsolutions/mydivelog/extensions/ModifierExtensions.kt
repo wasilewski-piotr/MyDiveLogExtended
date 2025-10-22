@@ -9,10 +9,16 @@ import androidx.compose.ui.unit.dp
 import org.itsolutions.mydivelog.design.theme.DesignSystem
 
 @Composable
-fun Modifier.verticalPadding() = this.padding(vertical = DesignSystem.spacing.xl)
+fun Modifier.verticalPadding() = this.padding(vertical = DesignSystem.spacing.lg)
+
+@Composable
+fun Modifier.horizontalPadding() = this.padding(horizontal = DesignSystem.spacing.md)
 
 @Composable
 fun Modifier.topPadding() = this.padding(top = DesignSystem.spacing.xl)
+
+@Composable
+fun Modifier.bottomPadding() = this.padding(bottom = DesignSystem.spacing.lg)
 
 fun Modifier.extendOutsideParent(
     start: Dp = 0.dp,
