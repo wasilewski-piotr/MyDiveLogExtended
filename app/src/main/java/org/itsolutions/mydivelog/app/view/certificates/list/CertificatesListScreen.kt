@@ -1,5 +1,6 @@
 package org.itsolutions.mydivelog.app.view.certificates.list
 
+import android.app.Activity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -8,6 +9,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.app.domain.model.Certificate
@@ -16,6 +18,7 @@ import org.itsolutions.mydivelog.app.domain.model.results.toMessageResource
 import org.itsolutions.mydivelog.app.presentation.certificates.list.CertificatesListViewModel.UiState
 import org.itsolutions.mydivelog.app.presentation.certificates.list.CertificatesListViewModel.UiState.Error
 import org.itsolutions.mydivelog.app.presentation.certificates.list.CertificatesListViewModel.UiState.Ready
+import org.itsolutions.mydivelog.app.view.certificates.create.CreateCertificateActivity
 import org.itsolutions.mydivelog.design.components.cards.DSCertificateCard
 import org.itsolutions.mydivelog.design.components.progress.DSCircularProgressIndicator
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
@@ -24,6 +27,7 @@ import org.itsolutions.mydivelog.design.components.states.error.DSErrorState
 import org.itsolutions.mydivelog.design.components.states.error.DSErrorStateFullScreen
 import org.itsolutions.mydivelog.design.components.text.DSTitleWithSubtitle
 import org.itsolutions.mydivelog.design.theme.DesignSystem
+import org.itsolutions.mydivelog.extensions.activityLauncherWithResult
 import org.itsolutions.mydivelog.extensions.verticalPadding
 
 @Composable
@@ -70,6 +74,13 @@ private fun CertificatesListScreenContent(
     onLongClick: (Certificate) -> Unit
 ) {
     val scrollState = rememberScrollState()
+    val context = LocalContext.current
+    val launcher = activityLauncherWithResult {
+        if (it.resultCode == Activity.RESULT_OK) {
+            onRetry()
+        }
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -89,16 +100,29 @@ private fun CertificatesListScreenContent(
             is Ready -> {
                 val certificates = uiState.certificates
                 if (certificates.isEmpty()) {
-                    Box(Modifier.fillMaxSize().weight(1f, true)) {
+                    Box(Modifier
+                        .fillMaxSize()
+                        .weight(1f, true)) {
                         if (uiState.organization == null) {
                             DSEmptyState(R.string.empty_state_no_certificates_found)
                         } else {
-                            DSEmptyState(
-                                stringResource(
-                                    id =R.string.empty_state_no_certificates_found_for_this_organization,
+                            DSErrorState(
+                                message = stringResource(
+                                    DataError.Local.NO_CERTIFICATES_FOUND_FOR_ORGANIZATION.toMessageResource(),
+                                    uiState.organization.name
+                                ),
+                                buttonLabel = stringResource(
+                                    id = R.string.empty_state_no_certificates_found_for_this_organization_button_label,
                                     formatArgs = arrayOf(uiState.organization.name)
                                 )
-                            )
+                            ) {
+                                launcher(
+                                    CreateCertificateActivity.createInstance(
+                                        context,
+                                        uiState.organization
+                                    )
+                                )
+                            }
                         }
                     }
                 } else {

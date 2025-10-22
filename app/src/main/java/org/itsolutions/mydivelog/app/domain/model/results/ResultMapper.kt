@@ -12,5 +12,6 @@ fun DataError.toMessageResource(): Int {
         DataError.Network.NO_INTERNET -> TODO()
         DataError.Network.UNKNOWN -> TODO()
         DataError.Local.MISSING_CERTIFICATE_ISSUE_DATE -> R.string.error_certificate_is_missing_date
+        DataError.Local.NO_CERTIFICATES_FOUND_FOR_ORGANIZATION -> R.string.empty_state_no_certificates_found_for_this_organization
     }
 }

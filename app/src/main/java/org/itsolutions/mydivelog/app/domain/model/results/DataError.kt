@@ -12,6 +12,7 @@ sealed interface DataError : Error {
         ELEMENT_ALREADY_EXISTS,
         CERTIFICATE_ALREADY_EXISTS,
         MISSING_CERTIFICATE_ISSUE_DATE,
+        NO_CERTIFICATES_FOUND_FOR_ORGANIZATION,
         UNKNOWN
     }
 }

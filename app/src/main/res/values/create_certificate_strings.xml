@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="create_certificate_top_navigation_title">Create Certificate</string>
+    <string name="create_certificate_for_organization_top_navigation_title">Create %1$s Certificate</string>
     <string name="create_certificate_choose_your_diving_organization_title">Choose Your Diving Organization</string>
     <string name="create_certificate_choose_your_diving_organization_subtitle">Choose the diving organization you are certified with to continue.</string>
     <string name="create_certificate_enter_certificate_details_title">Add your certificate details</string>
