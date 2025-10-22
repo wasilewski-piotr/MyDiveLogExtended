@@ -10,7 +10,6 @@ import org.itsolutions.mydivelog.design.components.buttons.DSButtonsOrientation
 import org.itsolutions.mydivelog.design.components.buttons.DSCombinedButtons
 import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWidth
 import org.itsolutions.mydivelog.design.components.states.DSStateFullScreen
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSErrorStateFullScreen(
@@ -81,46 +80,40 @@ fun DSErrorStateFullScreen(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSErrorStatePreviewSingleButton() {
-    MyDiveLogTheme {
-        DSErrorStateFullScreen(
-            title = "Error",
-            subtitle = "Something went wrong!",
-            primaryButtonText = "Close",
-            primaryButtonAction = { }
-        )
-    }
+    DSErrorStateFullScreen(
+        title = "Error",
+        subtitle = "Something went wrong!",
+        primaryButtonText = "Close",
+        primaryButtonAction = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSErrorStatePreviewCombinedButtonsHorizontal() {
-    MyDiveLogTheme {
-        DSErrorStateFullScreen(
-            title = "Error",
-            subtitle = "Something went wrong!",
-            primaryButtonText = "Close",
-            primaryButtonAction = { },
-            secondaryButtonText = "Retry",
-            secondaryButtonAction = { }
-        )
-    }
+    DSErrorStateFullScreen(
+        title = "Error",
+        subtitle = "Something went wrong!",
+        primaryButtonText = "Close",
+        primaryButtonAction = { },
+        secondaryButtonText = "Retry",
+        secondaryButtonAction = { }
+    )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSErrorStatePreviewCombinedButtonsVertical() {
-    MyDiveLogTheme {
-        DSErrorStateFullScreen(
-            title = "Error",
-            subtitle = "Something went wrong!",
-            primaryButtonText = "Close",
-            primaryButtonAction = { },
-            secondaryButtonText = "Retry",
-            secondaryButtonAction = { },
-            orientation = DSButtonsOrientation.VERTICAL
-        )
-    }
+    DSErrorStateFullScreen(
+        title = "Error",
+        subtitle = "Something went wrong!",
+        primaryButtonText = "Close",
+        primaryButtonAction = { },
+        secondaryButtonText = "Retry",
+        secondaryButtonAction = { },
+        orientation = DSButtonsOrientation.VERTICAL
+    )
 }

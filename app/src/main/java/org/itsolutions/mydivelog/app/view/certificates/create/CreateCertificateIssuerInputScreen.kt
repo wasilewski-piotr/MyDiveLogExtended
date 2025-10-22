@@ -1,7 +1,7 @@
 package org.itsolutions.mydivelog.app.view.certificates.create
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
@@ -19,12 +19,12 @@ import org.itsolutions.mydivelog.design.components.buttons.DSPrimaryButtonMaxWid
 import org.itsolutions.mydivelog.design.components.inputs.DSDateInput
 import org.itsolutions.mydivelog.design.components.inputs.DSTextInput
 import org.itsolutions.mydivelog.design.components.inputs.ValidationOverrides
+import org.itsolutions.mydivelog.design.components.section.DSBottomSection
+import org.itsolutions.mydivelog.design.components.section.DSTopSection
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.components.spacers.WeightedSpacer
 import org.itsolutions.mydivelog.design.components.text.DSTitleWithSubtitle
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
-import org.itsolutions.mydivelog.extensions.verticalPadding
 
 @Composable
 internal fun CreateCertificateIssuerInputScreen(
@@ -32,70 +32,71 @@ internal fun CreateCertificateIssuerInputScreen(
     onClick: () -> Unit
 ) {
     val scrollState = rememberScrollState()
-    Column(modifier = Modifier.fillMaxSize().verticalPadding().verticalScroll(scrollState)) {
-        DSTitleWithSubtitle(
-            title = R.string.create_certificate_enter_certificate_issuer_details_title,
-            subtitle = R.string.create_certificate_enter_certificate_issuer_details_subtitle,
-        )
-        VerticalSpacer(DesignSystem.spacing.md)
+    Column(modifier = Modifier.fillMaxHeight().verticalScroll(scrollState)) {
+        DSTopSection {
+            DSTitleWithSubtitle(
+                title = R.string.create_certificate_enter_certificate_issuer_details_title,
+                subtitle = R.string.create_certificate_enter_certificate_issuer_details_subtitle,
+            )
+            VerticalSpacer(DesignSystem.spacing.md)
 
-        DSTextInput(
-            label = stringResource(R.string.create_certificate_issuer_name_input_title),
-            placeholder = stringResource(R.string.create_certificate_issuer_name_input_placeholder),
-            customError = ValidationOverrides(
-                required = R.string.create_certificate_empty_issuer_name
-            ),
-            field = state.certificateIssuerName
-        )
+            DSTextInput(
+                label = stringResource(R.string.create_certificate_issuer_name_input_title),
+                placeholder = stringResource(R.string.create_certificate_issuer_name_input_placeholder),
+                customError = ValidationOverrides(
+                    required = R.string.create_certificate_empty_issuer_name
+                ),
+                field = state.certificateIssuerName
+            )
 
-        VerticalSpacer(DesignSystem.spacing.sm)
+            VerticalSpacer(DesignSystem.spacing.sm)
 
-        DSTextInput(
-            label = stringResource(R.string.create_certificate_issuer_id_input_title),
-            placeholder = stringResource(R.string.create_certificate_issuer_id_input_placeholder),
-            customError = ValidationOverrides(
-                required = R.string.create_certificate_empty_issuer_id
-            ),
-            field = state.certificateIssuerId,
-            keyboardOptions = KeyboardOptions(
-                capitalization = KeyboardCapitalization.Characters,
-            ),
-        )
+            DSTextInput(
+                label = stringResource(R.string.create_certificate_issuer_id_input_title),
+                placeholder = stringResource(R.string.create_certificate_issuer_id_input_placeholder),
+                customError = ValidationOverrides(
+                    required = R.string.create_certificate_empty_issuer_id
+                ),
+                field = state.certificateIssuerId,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Characters,
+                ),
+            )
 
-        VerticalSpacer(DesignSystem.spacing.sm)
+            VerticalSpacer(DesignSystem.spacing.sm)
 
-        DSDateInput(
-            label = stringResource(R.string.create_certificate_certificate_issue_date_input_title),
-            placeholder = stringResource(R.string.create_certificate_certificate_issue_date_input_placeholder),
-            customError = ValidationOverrides(
-                required = R.string.create_certificate_empty_certificate_issue_date,
-                dateAfterToday = R.string.create_certificate_certificate_issue_date_in_future
-            ),
-            field = state.certificateIssueDate
-        )
-        VerticalSpacer(DesignSystem.spacing.sm)
-
+            DSDateInput(
+                label = stringResource(R.string.create_certificate_certificate_issue_date_input_title),
+                placeholder = stringResource(R.string.create_certificate_certificate_issue_date_input_placeholder),
+                customError = ValidationOverrides(
+                    required = R.string.create_certificate_empty_certificate_issue_date,
+                    dateAfterToday = R.string.create_certificate_certificate_issue_date_in_future
+                ),
+                field = state.certificateIssueDate
+            )
+            VerticalSpacer(DesignSystem.spacing.sm)
+        }
         WeightedSpacer()
-        DSPrimaryButtonMaxWidth(R.string.continue_text) {
-            onClick()
+        DSBottomSection {
+            DSPrimaryButtonMaxWidth(R.string.continue_text) {
+                onClick()
+            }
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun CreateCertificateIssuerInputScreenPreview() {
-    MyDiveLogTheme {
-        CreateCertificateIssuerInputScreen(
-            state = CreateCertificateViewModel.UiState.CertificateData(
-                organization = DiveOrganization.SSI,
-                certificateName = ValidationField("", Rules.notEmpty()),
-                certificateNumber = ValidationField("", Rules.notEmpty()),
-                certificateIssuerId = ValidationField("", Rules.notEmpty()),
-                certificateIssuerName = ValidationField("", Rules.notEmpty()),
-                certificateIssueDate = ValidationField(null, Rules.afterToday())
-            ),
-            onClick = { }
-        )
-    }
+    CreateCertificateIssuerInputScreen(
+        state = CreateCertificateViewModel.UiState.CertificateData(
+            organization = DiveOrganization.SSI,
+            certificateName = ValidationField("", Rules.notEmpty()),
+            certificateNumber = ValidationField("", Rules.notEmpty()),
+            certificateIssuerId = ValidationField("", Rules.notEmpty()),
+            certificateIssuerName = ValidationField("", Rules.notEmpty()),
+            certificateIssueDate = ValidationField(null, Rules.afterToday())
+        ),
+        onClick = { }
+    )
 }

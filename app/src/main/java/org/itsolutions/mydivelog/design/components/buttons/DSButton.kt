@@ -79,7 +79,7 @@ internal fun DSButton(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSButtonPreview() {
     DSButton(

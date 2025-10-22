@@ -9,7 +9,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSSubtitle(
@@ -33,11 +32,9 @@ fun DSSubtitle(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSSubtitlePreview() {
-    MyDiveLogTheme {
-        DSSubtitle("Subtitle")
-        DSSubtitle(R.string.bottom_navigation_certificates)
-    }
+    DSSubtitle("Subtitle")
+    DSSubtitle(R.string.bottom_navigation_certificates)
 }

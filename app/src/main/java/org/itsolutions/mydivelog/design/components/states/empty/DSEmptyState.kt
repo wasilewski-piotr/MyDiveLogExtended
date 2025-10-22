@@ -2,7 +2,6 @@ package org.itsolutions.mydivelog.design.components.states.empty
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,9 +15,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.R
+import org.itsolutions.mydivelog.design.components.spacers.WeightedSpacer
 import org.itsolutions.mydivelog.design.components.text.DSCardTitleWithTextCentered
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSEmptyState(@StringRes description: Int) {
@@ -29,10 +28,11 @@ fun DSEmptyState(@StringRes description: Int) {
 fun DSEmptyState(description: String) {
     Column(
         modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        WeightedSpacer(0.5f)
         DSEmptyStateContent(description)
+        WeightedSpacer()
     }
 }
 
@@ -41,19 +41,22 @@ internal fun DSEmptyStateContent(description: String) {
     Image(
         painter = painterResource(R.drawable.scuba_diving),
         contentDescription = null,
-        modifier = Modifier.size(DesignSystem.size.main_icon_size).rotate(40f).alpha(0.4f)
+        modifier = Modifier
+            .size(DesignSystem.size.main_icon_size)
+            .rotate(40f)
+            .alpha(0.4f)
     )
     DSCardTitleWithTextCentered(
-        modifier = Modifier.fillMaxWidth().alpha(0.4f),
+        modifier = Modifier
+            .fillMaxWidth()
+            .alpha(0.4f),
         title = stringResource(R.string.empty_state_title),
         text = description,
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSEmptyStatePreview() {
-    MyDiveLogTheme {
-        DSEmptyState(R.string.empty_state_no_organizations_found)
-    }
+    DSEmptyState(R.string.empty_state_no_organizations_found)
 }

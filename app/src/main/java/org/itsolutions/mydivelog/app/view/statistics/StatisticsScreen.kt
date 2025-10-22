@@ -4,7 +4,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.app.presentation.statistics.StatisticsViewModel
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun StatisticsScreen(viewModel: StatisticsViewModel) {
@@ -16,10 +15,8 @@ fun StatisticsScreenContent() {
     Text("Statistics")
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun StatisticsScreenPreview() {
-    MyDiveLogTheme {
-        StatisticsScreenContent()
-    }
+    StatisticsScreenContent()
 }

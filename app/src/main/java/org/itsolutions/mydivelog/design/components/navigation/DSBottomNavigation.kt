@@ -99,7 +99,7 @@ private fun NavHostController.navigateBackToHomepage(route: DSBottomNavigationEl
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSBottomNavigationPreview() {
     DSBottomNavigationBar(

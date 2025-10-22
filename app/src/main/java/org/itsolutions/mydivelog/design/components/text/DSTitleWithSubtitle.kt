@@ -8,7 +8,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.design.components.spacers.VerticalSpacer
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSTitleWithSubtitle(
@@ -62,13 +61,11 @@ fun DSTitleWithSubtitle(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSTitleWithSubtitlePreview() {
-    MyDiveLogTheme {
-        DSTitleWithSubtitle(
-            title = "This is my title",
-            subtitle = "This is my looooooooooooooong subtitle that I want to show"
-        )
-    }
+    DSTitleWithSubtitle(
+        title = "This is my title",
+        subtitle = "This is my looooooooooooooong subtitle that I want to show"
+    )
 }

@@ -96,7 +96,7 @@ fun DSPrimaryButton(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSPrimaryButtonMaxWidthPreview() {
     DSPrimaryButtonMaxWidth(
@@ -105,7 +105,7 @@ private fun DSPrimaryButtonMaxWidthPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSPrimaryButtonMaxWidthWithLeadingIconPreview() {
     DSPrimaryButtonMaxWidth(
@@ -115,7 +115,7 @@ private fun DSPrimaryButtonMaxWidthWithLeadingIconPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSPrimaryButtonMaxWidthWithTrailingIconPreview() {
     DSPrimaryButtonMaxWidth(
@@ -125,7 +125,7 @@ private fun DSPrimaryButtonMaxWidthWithTrailingIconPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSPrimaryButtonMaxWidthWithIconsPreview() {
     DSPrimaryButtonMaxWidth(
@@ -136,7 +136,7 @@ private fun DSPrimaryButtonMaxWidthWithIconsPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSPrimaryButtonPreview() {
     DSPrimaryButton(
@@ -145,7 +145,7 @@ private fun DSPrimaryButtonPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSPrimaryButtonWithLeadingIconPreview() {
     DSPrimaryButton(
@@ -155,7 +155,7 @@ private fun DSPrimaryButtonWithLeadingIconPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSPrimaryButtonWithTrailingIconPreview() {
     DSPrimaryButton(
@@ -165,7 +165,7 @@ private fun DSPrimaryButtonWithTrailingIconPreview() {
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSPrimaryButtonWithIconsPreview() {
     DSPrimaryButton(

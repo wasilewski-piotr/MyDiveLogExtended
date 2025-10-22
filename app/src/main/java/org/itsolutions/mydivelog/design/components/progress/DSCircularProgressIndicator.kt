@@ -10,7 +10,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import org.itsolutions.mydivelog.design.theme.DesignSystem
-import org.itsolutions.mydivelog.design.theme.MyDiveLogTheme
 
 @Composable
 fun DSCircularProgressIndicator() {
@@ -18,17 +17,15 @@ fun DSCircularProgressIndicator() {
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
+    ) {
         CircularProgressIndicator(
             modifier = Modifier.size(DesignSystem.size.main_icon_size)
         )
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSCircularProgressIndicatorPreview() {
-    MyDiveLogTheme {
-        DSCircularProgressIndicator()
-    }
+    DSCircularProgressIndicator()
 }

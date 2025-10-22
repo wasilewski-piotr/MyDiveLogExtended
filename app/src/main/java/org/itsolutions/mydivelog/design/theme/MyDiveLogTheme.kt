@@ -1,8 +1,6 @@
 package org.itsolutions.mydivelog.design.theme
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
@@ -10,7 +8,9 @@ import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import org.itsolutions.mydivelog.design.theme.colors.backgroundColor
+import org.itsolutions.mydivelog.design.theme.colors.primaryColor
 import org.itsolutions.mydivelog.design.theme.spacings.DSRadius
 import org.itsolutions.mydivelog.design.theme.spacings.DSSize
 import org.itsolutions.mydivelog.design.theme.spacings.DSSpacing
@@ -21,7 +21,16 @@ fun MyDiveLogTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-    val scheme = if (darkTheme) darkColorScheme() else lightColorScheme()
+    val scheme = if (darkTheme) darkColorScheme() else lightColorScheme(
+        primary = primaryColor,
+        background = Color.White,
+        secondaryContainer = backgroundColor,
+        surfaceContainerHighest = Color.White,
+        surfaceContainerHigh = backgroundColor,
+        surfaceContainer = Color.White,
+        outlineVariant = Color.Gray,
+        surface = Color.White
+    )
     val dsTypography = provideDSTypography()
 
     CompositionLocalProvider(
@@ -40,9 +49,7 @@ fun MyDiveLogTheme(
                 extraLarge = RoundedCornerShape(DesignSystem.radius.xl)
             ),
             content = {
-                Column(Modifier.background(scheme.background)) {
-                    content()
-                }
+                content()
             }
         )
     }

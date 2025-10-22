@@ -97,25 +97,25 @@ private fun DSTopNavigationIcon(
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSTopNavigationBackPreview() {
     DSTopNavigation(title = "Title", type = DSTopNavigationType.BACK) { }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSTopNavigationExitPreview() {
     DSTopNavigation(title = "Title", type = DSTopNavigationType.EXIT) { }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSTopNavigationStringResBackPreview() {
     DSTopNavigation(R.string.certificates_screen_new_certificate, DSTopNavigationType.BACK) { }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 private fun DSTopNavigationStringResExitPreview() {
     DSTopNavigation(R.string.certificates_screen_new_certificate, DSTopNavigationType.EXIT) { }
